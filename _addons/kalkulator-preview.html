@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenrechner — Kunert Renovierung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0e0f13;
+  --dark:#14161c;
+  --mid:#1e2029;
+  --gold:#c9a85c;
+  --gold2:#a8882e;
+  --white:#FAFAF8;
+  --light:#F2F0EC;
+  --cream:#EAE6DC;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.calc-wrap {
+  width: 100%;
+  max-width: 680px;
+}
+
+.calc-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.calc-header .eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.calc-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.calc-header p {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(250,250,248,0.5);
+}
+
+/* Steps */
+.step {
+  display: none;
+  animation: fadeUp 0.4s ease both;
+}
+.step.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.step-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(201,168,92,0.6);
+  margin-bottom: 1.25rem;
+}
+
+.step h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 1.75rem;
+}
+
+/* Leistung Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+@media(min-width:500px){ .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  user-select: none;
+}
+
+.card:hover {
+  border-color: rgba(201,168,92,0.4);
+  background: rgba(201,168,92,0.05);
+}
+
+.card.selected {
+  border-color: var(--gold);
+  background: rgba(201,168,92,0.1);
+}
+
+.card .icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card .label {
+  font-size: 0.82rem;
+  color: rgba(250,250,248,0.75);
+  line-height: 1.3;
+}
+
+.card.selected .label { color: var(--white); }
+
+/* Area Slider */
+.area-control {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.area-display {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.area-display .value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.area-display .unit {
+  font-size: 1rem;
+  color: rgba(250,250,248,0.4);
+  margin-left: 0.25rem;
+}
+
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.area-hints {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: rgba(250,250,248,0.3);
+}
+
+/* Zustand Cards */
+.zustand-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.zustand-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.4rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  user-select: none;
+}
+
+.zustand-card:hover {
+  border-color: rgba(201,168,92,0.4);
+  background: rgba(201,168,92,0.05);
+}
+
+.zustand-card.selected {
+  border-color: var(--gold);
+  background: rgba(201,168,92,0.1);
+}
+
+.zustand-card .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 auto 0.6rem;
+}
+
+.dot-gut    { background: #5bbd72; }
+.dot-normal { background: var(--gold); }
+.dot-bad    { background: #e05555; }
+
+.zustand-card .zt {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.zustand-card .zd {
+  font-size: 0.72rem;
+  color: rgba(250,250,248,0.4);
+  line-height: 1.3;
+}
+
+/* Result */
+.result-box {
+  background: linear-gradient(135deg, rgba(201,168,92,0.12), rgba(201,168,92,0.04));
+  border: 1px solid rgba(201,168,92,0.35);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.result-box .result-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(201,168,92,0.6);
+  margin-bottom: 0.75rem;
+}
+
+.result-box .price-range {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.result-box .price-note {
+  font-size: 0.78rem;
+  color: rgba(250,250,248,0.4);
+}
+
+.result-summary {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.83rem;
+  color: rgba(250,250,248,0.6);
+  line-height: 1.7;
+}
+
+.result-summary span { color: var(--white); font-weight: 500; }
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-form input, .contact-form textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+  color: rgba(250,250,248,0.3);
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: rgba(201,168,92,0.5);
+}
+
+.contact-form textarea { resize: none; height: 90px; }
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: #d4b668;
+  transform: translateY(-1px);
+}
+
+.btn-back {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(250,250,248,0.5);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 0.6rem;
+}
+
+.btn-back:hover { border-color: rgba(255,255,255,0.25); color: var(--white); }
+
+/* Progress */
+.progress {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: all 0.3s;
+}
+
+.progress-dot.active { background: var(--gold); transform: scale(1.3); }
+.progress-dot.done   { background: rgba(201,168,92,0.4); }
+
+/* Success */
+.success-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(91,189,114,0.15);
+  border: 1px solid rgba(91,189,114,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.6rem;
+}
+
+.success-state h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.success-state p {
+  font-size: 0.88rem;
+  color: rgba(250,250,248,0.5);
+  line-height: 1.6;
+}
+
+.disclaimer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(250,250,248,0.25);
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="calc-wrap">
+  <div class="calc-header">
+    <div class="eyebrow">Kostenschätzung</div>
+    <h1>Was kostet Ihre Renovierung?</h1>
+    <p>In 3 Schritten zur unverbindlichen Sofortschätzung</p>
+  </div>
+
+  <div class="progress">
+    <div class="progress-dot active" id="pd1"></div>
+    <div class="progress-dot" id="pd2"></div>
+    <div class="progress-dot" id="pd3"></div>
+    <div class="progress-dot" id="pd4"></div>
+  </div>
+
+  <!-- Step 1: Leistung -->
+  <div class="step active" id="step1">
+    <div class="step-label">Schritt 1 von 3</div>
+    <h2>Welche Leistung benötigen Sie?</h2>
+    <div class="card-grid">
+      <div class="card" data-leistung="maler" data-min="12" data-max="20" onclick="selectLeistung(this)">
+        <span class="icon">🖌️</span>
+        <div class="label">Malerarbeiten</div>
+      </div>
+      <div class="card" data-leistung="tapete" data-min="18" data-max="32" onclick="selectLeistung(this)">
+        <span class="icon">📄</span>
+        <div class="label">Tapezieren</div>
+      </div>
+      <div class="card" data-leistung="boden" data-min="22" data-max="55" onclick="selectLeistung(this)">
+        <span class="icon">🪵</span>
+        <div class="label">Bodenbelag</div>
+      </div>
+      <div class="card" data-leistung="bad" data-min="85" data-max="160" onclick="selectLeistung(this)">
+        <span class="icon">🚿</span>
+        <div class="label">Badsanierung</div>
+      </div>
+      <div class="card" data-leistung="komplett" data-min="60" data-max="110" onclick="selectLeistung(this)">
+        <span class="icon">🏠</span>
+        <div class="label">Komplett­renovierung</div>
+      </div>
+      <div class="card" data-leistung="aussen" data-min="18" data-max="38" onclick="selectLeistung(this)">
+        <span class="icon">🏗️</span>
+        <div class="label">Fassade / Außen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Fläche -->
+  <div class="step" id="step2">
+    <div class="step-label">Schritt 2 von 3</div>
+    <h2>Wie viel Fläche soll renoviert werden?</h2>
+    <div class="area-control">
+      <div class="area-display">
+        <span class="value" id="areaDisplay">40</span>
+        <span class="unit">m²</span>
+      </div>
+      <input type="range" id="areaSlider" min="5" max="300" value="40" oninput="updateArea(this.value)">
+      <div class="area-hints">
+        <span>5 m²</span>
+        <span>Kleines Zimmer ~15 m²</span>
+        <span>300 m²</span>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="goStep(3)">Weiter</button>
+    <button class="btn-back" onclick="goStep(1)">← Zurück</button>
+  </div>
+
+  <!-- Step 3: Zustand -->
+  <div class="step" id="step3">
+    <div class="step-label">Schritt 3 von 3</div>
+    <h2>Wie ist der aktuelle Zustand?</h2>
+    <div class="zustand-grid">
+      <div class="zustand-card" data-faktor="1.0" onclick="selectZustand(this)">
+        <div class="dot dot-gut"></div>
+        <div class="zt">Gut</div>
+        <div class="zd">Leichte Auffrischung nötig</div>
+      </div>
+      <div class="zustand-card" data-faktor="1.3" onclick="selectZustand(this)">
+        <div class="dot dot-normal"></div>
+        <div class="zt">Normal</div>
+        <div class="zd">Standard­renovierung erforderlich</div>
+      </div>
+      <div class="zustand-card" data-faktor="1.65" onclick="selectZustand(this)">
+        <div class="dot dot-bad"></div>
+        <div class="zt">Sanierungs­bedürftig</div>
+        <div class="zd">Aufwändige Arbeiten nötig</div>
+      </div>
+    </div>
+    <button class="btn-back" onclick="goStep(2)">← Zurück</button>
+  </div>
+
+  <!-- Step 4: Ergebnis + Lead -->
+  <div class="step" id="step4">
+    <div class="step-label">Ihre Schätzung</div>
+    <h2>Kostenrahmen für Ihr Projekt</h2>
+
+    <div class="result-box">
+      <div class="result-label">Geschätzte Kosten</div>
+      <div class="price-range" id="priceRange">—</div>
+      <div class="price-note">Unverbindliche Orientierung — exaktes Angebot nach Besichtigung</div>
+    </div>
+
+    <div class="result-summary" id="resultSummary"></div>
+
+    <p style="font-size:0.82rem;color:rgba(250,250,248,0.45);margin-bottom:1.25rem;line-height:1.6">
+      Tragen Sie Ihre Daten ein — Daniel Kunert meldet sich innerhalb von 2 Stunden mit einem verbindlichen Angebot.
+    </p>
+
+    <form class="contact-form" id="calcForm" onsubmit="submitForm(event)">
+      <input type="hidden" id="hiddenCalcData" name="kalkulator_daten" value="">
+      <input type="text" name="name" placeholder="Ihr Name *" required>
+      <input type="tel" name="telefon" placeholder="Telefon *" required>
+      <input type="email" name="email" placeholder="E-Mail">
+      <textarea name="nachricht" placeholder="Anmerkungen (optional)"></textarea>
+      <button type="submit" class="btn-primary" id="submitBtn">
+        Kostenloses Angebot anfordern →
+      </button>
+    </form>
+
+    <p class="disclaimer">
+      Mit dem Absenden stimmen Sie der Kontaktaufnahme durch Kunert Renovierung zu.<br>
+      Keine Weitergabe an Dritte. Kein Spam.
+    </p>
+
+    <button class="btn-back" onclick="goStep(3)">← Anpassen</button>
+  </div>
+
+  <!-- Success -->
+  <div class="step" id="stepSuccess">
+    <div class="success-state">
+      <div class="success-icon">✓</div>
+      <h3>Anfrage gesendet!</h3>
+      <p style="margin-top:0.5rem">Daniel Kunert wurde sofort benachrichtigt<br>und meldet sich innerhalb von 2 Stunden bei Ihnen.</p>
+      <p style="margin-top:1.5rem;font-size:0.82rem;color:rgba(250,250,248,0.35)">
+        Sie erhalten eine Bestätigung per E-Mail.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let state = { leistungLabel: '', priceMin: 0, priceMax: 0, area: 40, zustandFaktor: 1.0, zustandLabel: '' };
+
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.querySelectorAll('.progress-dot').forEach((d,i) => {
+    d.classList.toggle('active', i === n-1);
+    d.classList.toggle('done', i < n-1);
+  });
+}
+
+function selectLeistung(el) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.leistungLabel = el.querySelector('.label').textContent;
+  state.priceMin = parseFloat(el.dataset.min);
+  state.priceMax = parseFloat(el.dataset.max);
+  setTimeout(() => goStep(2), 220);
+}
+
+function updateArea(v) {
+  state.area = parseInt(v);
+  document.getElementById('areaDisplay').textContent = v;
+}
+
+function selectZustand(el) {
+  document.querySelectorAll('.zustand-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.zustandFaktor = parseFloat(el.dataset.faktor);
+  state.zustandLabel = el.querySelector('.zt').textContent;
+  setTimeout(() => showResult(), 250);
+}
+
+function showResult() {
+  const low  = Math.round(state.priceMin * state.area * state.zustandFaktor / 50) * 50;
+  const high = Math.round(state.priceMax * state.area * state.zustandFaktor / 50) * 50;
+  const fmt  = n => n.toLocaleString('de-DE') + ' €';
+
+  document.getElementById('priceRange').textContent = fmt(low) + ' – ' + fmt(high);
+  document.getElementById('resultSummary').innerHTML =
+    `Leistung: <span>${state.leistungLabel}</span> ·
+     Fläche: <span>${state.area} m²</span> ·
+     Zustand: <span>${state.zustandLabel}</span>`;
+
+  const calcData = `${state.leistungLabel}, ${state.area}m², Zustand: ${state.zustandLabel}, Schätzung: ${fmt(low)}–${fmt(high)}`;
+  document.getElementById('hiddenCalcData').value = calcData;
+
+  goStep(4);
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Wird gesendet…';
+  btn.disabled = true;
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+    // Formspree — replace mlgpooqw with actual ID when live
+    const res = await fetch('https://formspree.io/f/mlgpooqw', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById('stepSuccess').classList.add('active');
+      document.querySelectorAll('.progress-dot').forEach(d => {
+        d.classList.remove('active');
+        d.classList.add('done');
+      });
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = 'Fehler — bitte nochmal versuchen';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
