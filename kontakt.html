@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Kunert Renovierung Leipzig</title>
+<meta name="description" content="Kostenloser Kostenvoranschlag für Ihre Renovierung in Leipzig. Kunert Renovierung — 0178 8092955 — Saarländer Str. 42, 04179 Leipzig.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--black:#0e0f13;--dark:#14161c;--mid:#1e2029;--navy:#282b38;--gold:#c9a85c;--gold2:#a8882e;--white:#FAFAF8;--light:#F2F0EC;--cream:#EAE6DC;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;transition:background 0.4s}
+header.scrolled{background:rgba(14,15,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,92,0.12)}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.logo-sub{font-size:0.65rem;font-weight:500;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,250,248,0.75);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:0.55rem 1.4rem;border-radius:2px;font-weight:700!important;transition:background 0.2s!important}
+.nav-cta:hover,.nav-links a.active.nav-cta{background:var(--gold2)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--white);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 5% 5rem;background:var(--dark);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,92,0.06) 0%,transparent 70%);pointer-events:none}
+.page-hero-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.page-hero-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1.05;max-width:700px}
+.page-hero-sub{margin-top:1.5rem;font-size:1.05rem;font-weight:300;color:rgba(250,250,248,0.65);max-width:550px;line-height:1.75}
+
+/* PROMISE STRIP */
+.promise-strip{background:var(--cream);padding:2.5rem 5%}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto;text-align:center}
+.promise-item{padding:1rem}
+.promise-icon{font-size:1.8rem;margin-bottom:0.6rem}
+.promise-title{font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;color:var(--black)}
+.promise-desc{font-size:0.8rem;font-weight:300;color:rgba(14,15,19,0.55)}
+
+/* CONTACT SPLIT */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+.contact-form-side{background:var(--dark);padding:5rem 5%}
+.contact-info-side{background:var(--black)}
+.contact-map{height:340px}
+.contact-map iframe{width:100%;height:100%;border:0;filter:invert(90%) hue-rotate(180deg)}
+.contact-details{padding:3rem 2.5rem}
+.contact-details h3{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:2rem;color:var(--gold)}
+.contact-row{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-row svg{flex-shrink:0;margin-top:2px;color:var(--gold)}
+.contact-row-label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,250,248,0.35);margin-bottom:0.2rem}
+.contact-row-value{font-size:0.95rem;font-weight:400}
+.contact-row-value a{color:var(--white);transition:color 0.2s}
+.contact-row-value a:hover{color:var(--gold)}
+.wa-big{display:flex;align-items:center;gap:1rem;background:#25d366;color:white;padding:1rem 1.5rem;border-radius:4px;margin-top:2rem;transition:background 0.2s}
+.wa-big:hover{background:#1db954}
+.wa-big svg{width:26px;height:26px;fill:white;flex-shrink:0}
+.wa-big-text{font-weight:700;font-size:0.9rem;line-height:1.3}
+.wa-big-sub{font-size:0.75rem;font-weight:300;opacity:0.8}
+
+/* FORM */
+.form-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.form-title{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:700;margin-bottom:0.75rem}
+.form-sub{font-size:0.9rem;font-weight:300;color:rgba(250,250,248,0.6);margin-bottom:2rem;line-height:1.65}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,250,248,0.45);margin-bottom:0.5rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--mid);border:1px solid rgba(255,255,255,0.08);color:var(--white);padding:0.85rem 1rem;border-radius:2px;font-family:var(--sans);font-size:0.9rem;transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:140px}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;background:var(--gold);color:var(--black);border:none;padding:1.1rem;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background 0.2s,transform 0.2s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold2);transform:translateY(-1px)}
+.form-note{font-size:0.75rem;color:rgba(250,250,248,0.3);margin-top:1rem;text-align:center}
+
+/* FAQ */
+.faq-section{padding:6rem 5%;background:var(--cream);color:var(--black)}
+.faq-header{text-align:center;margin-bottom:3rem}
+.faq-header h2{font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:700;margin-bottom:0.75rem;color:var(--black)}
+.faq-header p{font-size:1rem;font-weight:300;color:rgba(14,15,19,0.6)}
+.faq-grid{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid rgba(14,15,19,0.12)}
+.faq-q{width:100%;background:none;border:none;color:var(--black);padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer;font-family:var(--sans);font-size:1rem;font-weight:600;transition:color 0.2s;gap:1rem}
+.faq-q:hover{color:var(--gold)}
+.faq-arrow{flex-shrink:0;width:20px;height:20px;border:1.5px solid rgba(14,15,19,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:transform 0.3s,border-color 0.2s}
+.faq-item.open .faq-arrow{transform:rotate(180deg);border-color:var(--gold)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.16,1,0.3,1)}
+.faq-a-inner{padding-bottom:1.5rem;font-size:0.9rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65)}
+
+footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding:3rem 5%;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+.foot-brand .logo-name{font-size:1.5rem}
+.foot-brand p{margin-top:1rem;font-size:0.85rem;font-weight:300;color:rgba(250,250,248,0.45);line-height:1.7;max-width:280px}
+.foot-col h4{font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.foot-col ul li a{font-size:0.85rem;color:rgba(250,250,248,0.5);transition:color 0.2s}
+.foot-col ul li a:hover{color:var(--white)}
+.foot-bottom{background:var(--black);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.04);font-size:0.75rem;color:rgba(250,250,248,0.3)}
+.foot-bottom a{color:rgba(250,250,248,0.3);transition:color 0.2s}
+.foot-bottom a:hover{color:var(--gold)}
+.ust{font-size:0.7rem;color:rgba(250,250,248,0.2);margin-top:1rem}
+.slider-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.slider-overlay.open{opacity:1;pointer-events:all}
+.slider-panel{position:fixed;top:0;right:0;bottom:0;width:min(540px,100%);background:var(--dark);z-index:2001;overflow-y:auto;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:3rem 2.5rem}
+.slider-panel.open{transform:translateX(0)}
+.slider-close{position:sticky;top:0;float:right;background:var(--mid);border:none;color:var(--white);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.slider-close:hover{background:var(--navy)}
+.slider-panel h2{font-family:var(--serif);font-size:1.8rem;color:var(--gold);margin-bottom:2rem;margin-top:1rem}
+.slider-panel h3{font-size:1rem;font-weight:700;margin:1.5rem 0 0.5rem;color:var(--gold)}
+.slider-panel p{font-size:0.88rem;font-weight:300;line-height:1.75;color:rgba(250,250,248,0.7)}
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:1500;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;animation:waPulse 2.5s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.12);animation:none}
+.wa-float svg{width:30px;height:30px;fill:white}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.65),0 0 0 12px rgba(37,211,102,0.1)}}
+.fu{opacity:0;transform:translateY(30px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media(max-width:900px){.contact-split{grid-template-columns:1fr}.contact-map{height:280px}.promises{grid-template-columns:1fr}footer{grid-template-columns:1fr 1fr}.foot-brand{grid-column:span 2}}
+@media(max-width:680px){.nav-links{display:none}.burger{display:flex}.form-grid-2{grid-template-columns:1fr}.promises{grid-template-columns:1fr;max-width:300px;margin:0 auto}footer{grid-template-columns:1fr}.foot-brand{grid-column:span 1}}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <nav>
+    <a href="index.html" class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></a>
+    <ul class="nav-links">
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="index.html#ueber-uns">Über uns</a></li>
+      <li><a href="index.html#bewertungen">Bewertungen</a></li>
+      <li><a href="kontakt.html" class="nav-cta active">Anfragen</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="leistungen.html" class="mm-link">Leistungen</a>
+  <a href="projekte.html" class="mm-link">Projekte</a>
+  <a href="index.html#ueber-uns" class="mm-link">Über uns</a>
+  <a href="index.html#bewertungen" class="mm-link">Bewertungen</a>
+  <a href="kontakt.html" class="mm-link" style="color:var(--gold)">Anfragen</a>
+</div>
+
+<div class="page-hero">
+  <p class="page-hero-eyebrow fu">Kostenloses Erstgespräch</p>
+  <h1 class="page-hero-title fu d1">Schreiben Sie<br><span style="color:var(--gold)">uns an.</span></h1>
+  <p class="page-hero-sub fu d2">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Festpreisangebot innerhalb von 48 Stunden.</p>
+</div>
+
+<div class="promise-strip">
+  <div class="promises">
+    <div class="promise-item fu">
+      <div class="promise-icon">🚗</div>
+      <div class="promise-title">Kostenlose Besichtigung</div>
+      <div class="promise-desc">Wir kommen zu Ihnen — ohne Kosten, ohne Verpflichtung</div>
+    </div>
+    <div class="promise-item fu d1">
+      <div class="promise-icon">📋</div>
+      <div class="promise-title">Angebot in 48h</div>
+      <div class="promise-desc">Klares Festpreisangebot, keine versteckten Kosten</div>
+    </div>
+    <div class="promise-item fu d2">
+      <div class="promise-icon">🤝</div>
+      <div class="promise-title">Persönlicher Ansprechpartner</div>
+      <div class="promise-desc">Direkt Daniel Kunert — kein Callcenter, kein Subunternehmer</div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-split">
+  <div class="contact-form-side">
+    <p class="form-eyebrow fu">Jetzt anfragen</p>
+    <h2 class="form-title fu d1">Ihr Projekt<br>beschreiben</h2>
+    <p class="form-sub fu d2">Je mehr Details Sie uns geben, desto präziser ist unser Angebot. Alle Felder mit * sind Pflichtfelder.</p>
+    <form action="https://formspree.io/f/mlgpooqw" method="POST" class="fu d3">
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="name">Vor- &amp; Nachname *</label>
+          <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefon</label>
+          <input type="tel" id="tel" name="telefon" placeholder="0341 / ...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-Mail-Adresse *</label>
+        <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse des Objekts</label>
+        <input type="text" id="adresse" name="adresse" placeholder="Musterstr. 12, 04109 Leipzig">
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="leistung">Gewünschte Leistung *</label>
+          <select id="leistung" name="leistung" required>
+            <option value="">Bitte auswählen...</option>
+            <option>Bodenbelag</option>
+            <option>Malerarbeiten</option>
+            <option>Tapezieren</option>
+            <option>Komplettrenovierung</option>
+            <option>Innenausbau</option>
+            <option>Mehreres / Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="flaeche">Ungefähre Fläche</label>
+          <select id="flaeche" name="flaeche">
+            <option value="">Bitte auswählen...</option>
+            <option>bis 30 m²</option>
+            <option>30–60 m²</option>
+            <option>60–100 m²</option>
+            <option>100–150 m²</option>
+            <option>über 150 m²</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="msg">Projektbeschreibung *</label>
+        <textarea id="msg" name="nachricht" placeholder="Z.B. Wohnzimmer + Schlafzimmer ca. 60 m², Parkett schleifen + versiegeln, Wände neu streichen. Gewünschter Starttermin: März 2026." required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="Neue Anfrage über Kunert Renovierung">
+      <button type="submit" class="form-submit">Anfrage kostenlos absenden</button>
+      <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Anfragebeantwortung zu. Mehr: <a href="javascript:void(0)" onclick="openSlider('dsg')" style="color:var(--gold)">Datenschutz</a></p>
+    </form>
+  </div>
+  <div class="contact-info-side">
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2491.5!2d12.317!3d51.340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaarl%C3%A4nder+Str.+42%2C+04179+Leipzig!5e0!3m2!1sde!2sde!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kunert Renovierung Leipzig"></iframe>
+    </div>
+    <div class="contact-details">
+      <h3>Direkt Kontakt</h3>
+      <div class="contact-row">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div><div class="contact-row-label">Telefon</div><div class="contact-row-value"><a href="tel:+4917880922955">0178 8092955</a></div></div>
+      </div>
+      <div class="contact-row">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        <div><div class="contact-row-label">E-Mail</div><div class="contact-row-value"><a href="mailto:info@kunert-renovierung.de">info@kunert-renovierung.de</a></div></div>
+      </div>
+      <div class="contact-row">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><div class="contact-row-label">Adresse</div><div class="contact-row-value">Saarländer Str. 42<br>04179 Leipzig</div></div>
+      </div>
+      <div class="contact-row">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div><div class="contact-row-label">Öffnungszeiten</div><div class="contact-row-value">Mo–Fr 07:00 – 18:00 Uhr</div></div>
+      </div>
+      <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-big">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <div><div class="wa-big-text">Direkt auf WhatsApp schreiben</div><div class="wa-big-sub">Antwort meist innerhalb 1 Stunde</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <div class="faq-header">
+    <h2 class="fu">Häufige Fragen</h2>
+    <p class="fu d1">Kurze Antworten auf die häufigsten Fragen unserer Kunden</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Wie schnell kann ich einen Termin bekommen? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">In der Regel innerhalb von 1–3 Werktagen. Bei dringenden Fällen (z.B. nach Wasserschaden) versuchen wir, innerhalb von 48 Stunden vor Ort zu sein. Schreiben Sie uns einfach auf WhatsApp.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Was kostet eine Besichtigung? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Die Besichtigung und das Angebot sind komplett kostenlos und unverbindlich. Erst wenn Sie uns den Auftrag erteilen, entstehen Kosten.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Arbeiten Sie auch am Wochenende? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Nach Absprache ist auch samstags ein Termin möglich — insbesondere wenn Sie die Wohnung schnell übergeben müssen. Sprechen Sie uns einfach an.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Gilt der angebotene Preis als Festpreis? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Ja. Nach der Besichtigung erhalten Sie ein klares Festpreisangebot ohne versteckte Kosten. Nur wenn sich der Auftragsumfang nachträglich ändert, passen wir das Angebot gemeinsam mit Ihnen an.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Wer führt die Arbeiten durch? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Daniel Kunert persönlich — mit maximal einem fest eingespielten Helfer. Wir vermitteln keine Aufträge an Subunternehmer. Sie wissen immer, wer bei Ihnen arbeitet.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Muss ich während der Arbeiten zu Hause sein? <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Nicht zwingend. Viele Kunden übergeben uns einfach einen Schlüssel. Wir hinterlassen alles sauber und besenrein — mit Fotodokumentation als Übergabenachweis.</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-brand">
+    <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></div>
+    <p>Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
+    <p class="ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
+  </div>
+  <div class="foot-col">
+    <h4>Seiten</h4>
+    <ul>
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </div>
+  <div class="foot-col">
+    <h4>Kontakt</h4>
+    <ul>
+      <li><a href="tel:+4917880922955">0178 8092955</a></li>
+      <li><a href="https://wa.me/491788092955">WhatsApp</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="foot-bottom">
+  <span>© <span id="year"></span> Kunert Renovierung · Leipzig</span>
+  <div style="display:flex;gap:1.5rem">
+    <a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a>
+    <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a>
+  </div>
+</div>
+
+<div class="slider-overlay" id="imp-overlay" onclick="closeSlider('imp')"></div>
+<div class="slider-panel" id="imp-panel">
+  <button class="slider-close" onclick="closeSlider('imp')">✕</button>
+  <h2>Impressum</h2>
+  <h3>§ 5 TMG</h3><p>Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
+  <h3>Kontakt</h3><p>Tel: 0178 8092955 · info@kunert-renovierung.de</p>
+  <h3>Umsatzsteuer</h3><p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+</div>
+<div class="slider-overlay" id="dsg-overlay" onclick="closeSlider('dsg')"></div>
+<div class="slider-panel" id="dsg-panel">
+  <button class="slider-close" onclick="closeSlider('dsg')">✕</button>
+  <h2>Datenschutz</h2>
+  <h3>Verantwortlicher</h3><p>Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
+  <h3>Kontaktformular</h3><p>Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h3>Hosting</h3><p>GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
+</div>
+
+<a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+window.addEventListener('scroll',()=>document.getElementById('header').classList.toggle('scrolled',scrollY>60),{passive:true});
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
+document.querySelectorAll('.mm-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');mm.classList.remove('open');document.body.style.overflow='';}));
+const fuObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fu').forEach(el=>fuObs.observe(el));
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item'),ans=item.querySelector('.faq-a');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0';});
+  if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+}
+function openSlider(id){document.getElementById(id+'-overlay').classList.add('open');document.getElementById(id+'-panel').classList.add('open');document.body.style.overflow='hidden';}
+function closeSlider(id){document.getElementById(id+'-overlay').classList.remove('open');document.getElementById(id+'-panel').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>

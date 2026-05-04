@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farboptionen — Kunert Renovierung</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#111;font-family:'Inter',system-ui,sans-serif;color:white}
+
+/* PICKER NAV */
+.picker-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;height:60px;
+}
+.picker-nav-title{font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.picker-btns{display:flex;gap:0.5rem}
+.picker-btn{padding:0.45rem 1.1rem;border-radius:2px;border:1px solid rgba(255,255,255,0.15);background:none;color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.picker-btn:hover{background:rgba(255,255,255,0.08);color:white}
+.picker-btn[data-opt="a"]{border-color:rgba(196,98,45,0.5);color:rgba(196,98,45,0.9)}
+.picker-btn[data-opt="a"]:hover{background:rgba(196,98,45,0.15)}
+.picker-btn[data-opt="b"]{border-color:rgba(46,160,67,0.5);color:rgba(46,160,67,0.9)}
+.picker-btn[data-opt="b"]:hover{background:rgba(46,160,67,0.15)}
+.picker-btn[data-opt="c"]{border-color:rgba(212,168,92,0.5);color:rgba(212,168,92,0.9)}
+.picker-btn[data-opt="c"]:hover{background:rgba(212,168,92,0.15)}
+
+/* OPTION SECTIONS */
+.option-section{display:none}
+.option-section.active{display:block}
+
+/* LABEL BADGE */
+.option-label{
+  text-align:center;padding:2.5rem 5% 0;
+}
+.option-badge{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  padding:0.6rem 1.5rem;border-radius:2px;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.option-name{font-size:1.5rem;font-weight:700;margin-bottom:0.3rem}
+.option-desc{font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.45);max-width:520px;margin:0 auto}
+
+/* ══════════════════════════════════
+   OPTION A — WARM EARTH
+══════════════════════════════════ */
+.opt-a{
+  --bg:     #0d0a08;
+  --dark:   #1a1410;
+  --mid:    #2c2018;
+  --warm:   #3d2c20;
+  --acc:    #c4622d;
+  --acc2:   #a84f22;
+  --white:  #F8F4EF;
+  --muted:  rgba(248,244,239,0.65);
+}
+.opt-a .option-badge{background:rgba(196,98,45,0.15);color:#c4622d;border:1px solid rgba(196,98,45,0.3)}
+
+/* NAV A */
+.opt-a .demo-nav{background:rgba(13,10,8,0.98);border-bottom:1px solid rgba(196,98,45,0.15);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.opt-a .demo-logo-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.opt-a .demo-logo-sub{font-size:0.62rem;font-weight:500;color:var(--acc);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px}
+.opt-a .demo-nav-links{display:flex;gap:2rem;list-style:none}
+.opt-a .demo-nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,244,239,0.6);text-decoration:none;transition:color 0.2s}
+.opt-a .demo-nav-links a:hover{color:var(--acc)}
+.opt-a .demo-nav-cta{background:var(--acc);color:var(--white);padding:0.5rem 1.3rem;border-radius:2px;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+.opt-a .demo-nav-cta:hover{background:var(--acc2)}
+
+/* HERO A */
+.opt-a .demo-hero{background:var(--bg);padding:5rem 5% 4rem;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center}
+.opt-a .demo-hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/5493654/pexels-photo-5493654.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover;filter:brightness(0.25) saturate(0.6)}
+.opt-a .demo-hero-content{position:relative;z-index:2;max-width:700px}
+.opt-a .demo-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:1.2rem}
+.opt-a .demo-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.2rem;color:var(--white)}
+.opt-a .demo-h1 span{color:var(--acc)}
+.opt-a .demo-sub{font-size:1rem;font-weight:300;color:rgba(248,244,239,0.75);max-width:480px;margin-bottom:2rem}
+.opt-a .demo-btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--acc);color:var(--white);padding:0.85rem 2rem;font-weight:700;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;margin-right:0.75rem;border:none;cursor:pointer;transition:background 0.2s}
+.opt-a .demo-btn-p:hover{background:var(--acc2)}
+.opt-a .demo-btn-g{display:inline-flex;align-items:center;gap:0.5rem;border:1.5px solid rgba(196,98,45,0.45);color:var(--white);padding:0.85rem 2rem;font-weight:600;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;background:none;cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.opt-a .demo-btn-g:hover{border-color:var(--acc);background:rgba(196,98,45,0.1)}
+
+/* TRUST A */
+.opt-a .demo-trust{background:var(--dark);border-top:1px solid rgba(196,98,45,0.12);border-bottom:1px solid rgba(196,98,45,0.12);padding:2.5rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.opt-a .trust-item{text-align:center;padding:1rem;border-right:1px solid rgba(255,255,255,0.06)}
+.opt-a .trust-item:last-child{border-right:none}
+.opt-a .trust-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--acc);line-height:1;margin-bottom:0.3rem}
+.opt-a .trust-label{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;color:rgba(248,244,239,0.5);text-transform:uppercase}
+
+/* CARDS A */
+.opt-a .demo-cards{background:var(--bg);padding:3.5rem 5%}
+.opt-a .cards-eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:0.75rem}
+.opt-a .cards-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:2rem;color:var(--white)}
+.opt-a .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.opt-a .card{background:var(--dark);padding:2rem 1.75rem;transition:background 0.25s}
+.opt-a .card:hover{background:var(--mid)}
+.opt-a .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.opt-a .card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;color:var(--white)}
+.opt-a .card-desc{font-size:0.85rem;font-weight:300;color:rgba(248,244,239,0.55);line-height:1.6}
+.opt-a .card.cta{background:var(--acc);cursor:pointer}
+.opt-a .card.cta:hover{background:var(--acc2)}
+.opt-a .card.cta .card-title{color:var(--white)}
+.opt-a .card.cta .card-desc{color:rgba(248,244,239,0.8)}
+.opt-a .card-arrow{display:block;margin-top:1.2rem;font-size:0.8rem;font-weight:700;color:rgba(248,244,239,0.9);text-transform:uppercase;letter-spacing:0.08em}
+
+/* SWATCHES A */
+.opt-a .swatches{background:var(--dark);padding:2rem 5%;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.opt-a .swatch{width:48px;height:48px;border-radius:4px;display:flex;align-items:flex-end;padding:4px}
+.opt-a .swatch-label{font-size:0.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em}
+.opt-a .swatch-name{font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.6);margin-left:0.75rem}
+
+/* QUOTE A */
+.opt-a .demo-quote{background:var(--warm);padding:3rem 5%;border-left:4px solid var(--acc)}
+.opt-a .demo-quote blockquote{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;font-weight:700;color:var(--acc);line-height:1.5;max-width:600px}
+.opt-a .demo-quote cite{display:block;margin-top:1rem;font-size:0.8rem;font-weight:400;font-style:normal;color:rgba(248,244,239,0.5);letter-spacing:0.1em;text-transform:uppercase}
+
+
+/* ══════════════════════════════════
+   OPTION B — FOREST PREMIUM
+══════════════════════════════════ */
+.opt-b{
+  --bg:     #060e08;
+  --dark:   #0a1a0d;
+  --mid:    #102814;
+  --deep:   #163520;
+  --acc:    #f4c200;
+  --acc2:   #c9a000;
+  --white:  #F2FAF4;
+  --muted:  rgba(242,250,244,0.65);
+}
+.opt-b .option-badge{background:rgba(26,61,34,0.5);color:#4caf50;border:1px solid rgba(76,175,80,0.3)}
+
+.opt-b .demo-nav{background:rgba(6,14,8,0.98);border-bottom:1px solid rgba(244,194,0,0.12);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.opt-b .demo-logo-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.opt-b .demo-logo-sub{font-size:0.62rem;font-weight:500;color:var(--acc);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px}
+.opt-b .demo-nav-links{display:flex;gap:2rem;list-style:none}
+.opt-b .demo-nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,250,244,0.6);text-decoration:none;transition:color 0.2s}
+.opt-b .demo-nav-links a:hover{color:var(--acc)}
+.opt-b .demo-nav-cta{background:var(--acc);color:#060e08;padding:0.5rem 1.3rem;border-radius:2px;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+.opt-b .demo-nav-cta:hover{background:var(--acc2)}
+
+.opt-b .demo-hero{background:var(--bg);padding:5rem 5% 4rem;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center}
+.opt-b .demo-hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/5493654/pexels-photo-5493654.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover;filter:brightness(0.2) saturate(0.4) hue-rotate(60deg)}
+.opt-b .demo-hero-content{position:relative;z-index:2;max-width:700px}
+.opt-b .demo-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:1.2rem}
+.opt-b .demo-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.2rem;color:var(--white)}
+.opt-b .demo-h1 span{color:var(--acc)}
+.opt-b .demo-sub{font-size:1rem;font-weight:300;color:rgba(242,250,244,0.75);max-width:480px;margin-bottom:2rem}
+.opt-b .demo-btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--acc);color:#060e08;padding:0.85rem 2rem;font-weight:700;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;margin-right:0.75rem;border:none;cursor:pointer;transition:background 0.2s}
+.opt-b .demo-btn-p:hover{background:var(--acc2)}
+.opt-b .demo-btn-g{display:inline-flex;align-items:center;gap:0.5rem;border:1.5px solid rgba(244,194,0,0.4);color:var(--white);padding:0.85rem 2rem;font-weight:600;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;background:none;cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.opt-b .demo-btn-g:hover{border-color:var(--acc);background:rgba(244,194,0,0.08)}
+
+.opt-b .demo-trust{background:var(--dark);border-top:1px solid rgba(244,194,0,0.1);border-bottom:1px solid rgba(244,194,0,0.1);padding:2.5rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.opt-b .trust-item{text-align:center;padding:1rem;border-right:1px solid rgba(255,255,255,0.05)}
+.opt-b .trust-item:last-child{border-right:none}
+.opt-b .trust-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--acc);line-height:1;margin-bottom:0.3rem}
+.opt-b .trust-label{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;color:rgba(242,250,244,0.45);text-transform:uppercase}
+
+.opt-b .demo-cards{background:var(--bg);padding:3.5rem 5%}
+.opt-b .cards-eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:0.75rem}
+.opt-b .cards-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:2rem;color:var(--white)}
+.opt-b .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.opt-b .card{background:var(--dark);padding:2rem 1.75rem;transition:background 0.25s}
+.opt-b .card:hover{background:var(--mid)}
+.opt-b .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.opt-b .card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;color:var(--white)}
+.opt-b .card-desc{font-size:0.85rem;font-weight:300;color:rgba(242,250,244,0.5);line-height:1.6}
+.opt-b .card.cta{background:var(--acc);cursor:pointer}
+.opt-b .card.cta:hover{background:var(--acc2)}
+.opt-b .card.cta .card-title{color:#060e08}
+.opt-b .card.cta .card-desc{color:rgba(6,14,8,0.75)}
+.opt-b .card-arrow{display:block;margin-top:1.2rem;font-size:0.8rem;font-weight:700;color:#060e08;text-transform:uppercase;letter-spacing:0.08em}
+
+.opt-b .demo-quote{background:var(--deep);padding:3rem 5%;border-left:4px solid var(--acc)}
+.opt-b .demo-quote blockquote{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;font-weight:700;color:var(--acc);line-height:1.5;max-width:600px}
+.opt-b .demo-quote cite{display:block;margin-top:1rem;font-size:0.8rem;font-weight:400;font-style:normal;color:rgba(242,250,244,0.45);letter-spacing:0.1em;text-transform:uppercase}
+
+
+/* ══════════════════════════════════
+   OPTION C — REFINED CURRENT
+══════════════════════════════════ */
+.opt-c{
+  --bg:     #080d14;
+  --dark:   #0d1828;
+  --mid:    #132040;
+  --navy:   #1d3060;
+  --acc:    #d4a85c;
+  --acc2:   #b8904a;
+  --white:  #F5F1EC;
+  --muted:  rgba(245,241,236,0.65);
+}
+.opt-c .option-badge{background:rgba(212,168,92,0.12);color:#d4a85c;border:1px solid rgba(212,168,92,0.3)}
+
+.opt-c .demo-nav{background:rgba(8,13,20,0.98);border-bottom:1px solid rgba(212,168,92,0.12);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.opt-c .demo-logo-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.opt-c .demo-logo-sub{font-size:0.62rem;font-weight:500;color:var(--acc);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px}
+.opt-c .demo-nav-links{display:flex;gap:2rem;list-style:none}
+.opt-c .demo-nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,241,236,0.6);text-decoration:none;transition:color 0.2s}
+.opt-c .demo-nav-links a:hover{color:var(--acc)}
+.opt-c .demo-nav-cta{background:var(--acc);color:var(--bg);padding:0.5rem 1.3rem;border-radius:2px;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+.opt-c .demo-nav-cta:hover{background:var(--acc2)}
+
+.opt-c .demo-hero{background:var(--bg);padding:5rem 5% 4rem;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center}
+.opt-c .demo-hero::before{content:'';position:absolute;inset:0;background:url('https://images.pexels.com/photos/5493654/pexels-photo-5493654.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover;filter:brightness(0.22) saturate(0.5)}
+.opt-c .demo-hero-content{position:relative;z-index:2;max-width:700px}
+.opt-c .demo-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:1.2rem}
+.opt-c .demo-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.2rem;color:var(--white)}
+.opt-c .demo-h1 span{color:var(--acc)}
+.opt-c .demo-sub{font-size:1rem;font-weight:300;color:rgba(245,241,236,0.75);max-width:480px;margin-bottom:2rem}
+.opt-c .demo-btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--acc);color:var(--bg);padding:0.85rem 2rem;font-weight:700;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;margin-right:0.75rem;border:none;cursor:pointer;transition:background 0.2s}
+.opt-c .demo-btn-p:hover{background:var(--acc2)}
+.opt-c .demo-btn-g{display:inline-flex;align-items:center;gap:0.5rem;border:1.5px solid rgba(212,168,92,0.4);color:var(--white);padding:0.85rem 2rem;font-weight:600;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;background:none;cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.opt-c .demo-btn-g:hover{border-color:var(--acc);background:rgba(212,168,92,0.08)}
+
+.opt-c .demo-trust{background:var(--dark);border-top:1px solid rgba(212,168,92,0.1);border-bottom:1px solid rgba(212,168,92,0.1);padding:2.5rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.opt-c .trust-item{text-align:center;padding:1rem;border-right:1px solid rgba(255,255,255,0.06)}
+.opt-c .trust-item:last-child{border-right:none}
+.opt-c .trust-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--acc);line-height:1;margin-bottom:0.3rem}
+.opt-c .trust-label{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;color:rgba(245,241,236,0.5);text-transform:uppercase}
+
+.opt-c .demo-cards{background:var(--bg);padding:3.5rem 5%}
+.opt-c .cards-eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--acc);margin-bottom:0.75rem}
+.opt-c .cards-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:2rem;color:var(--white)}
+.opt-c .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.opt-c .card{background:var(--dark);padding:2rem 1.75rem;transition:background 0.25s}
+.opt-c .card:hover{background:var(--mid)}
+.opt-c .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.opt-c .card-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;color:var(--white)}
+.opt-c .card-desc{font-size:0.85rem;font-weight:300;color:rgba(245,241,236,0.5);line-height:1.6}
+.opt-c .card.cta{background:var(--acc);cursor:pointer}
+.opt-c .card.cta:hover{background:var(--acc2)}
+.opt-c .card.cta .card-title{color:var(--bg)}
+.opt-c .card.cta .card-desc{color:rgba(8,13,20,0.7)}
+.opt-c .card-arrow{display:block;margin-top:1.2rem;font-size:0.8rem;font-weight:700;color:var(--bg);text-transform:uppercase;letter-spacing:0.08em}
+
+.opt-c .demo-quote{background:var(--navy);padding:3rem 5%;border-left:4px solid var(--acc)}
+.opt-c .demo-quote blockquote{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;font-weight:700;color:var(--acc);line-height:1.5;max-width:600px}
+.opt-c .demo-quote cite{display:block;margin-top:1rem;font-size:0.8rem;font-weight:400;font-style:normal;color:rgba(245,241,236,0.45);letter-spacing:0.1em;text-transform:uppercase}
+
+/* SHARED SWATCH ROW */
+.swatch-row{padding:2rem 5%;display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap}
+.sw{display:flex;flex-direction:column;align-items:center;gap:0.4rem}
+.sw-dot{width:44px;height:44px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08)}
+.sw-hex{font-size:0.6rem;font-family:monospace;color:rgba(255,255,255,0.35)}
+.sw-name{font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+
+/* DECISION STRIP */
+.decision-strip{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:3rem 5%;text-align:center}
+.decision-strip h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:0.5rem;color:white}
+.decision-strip p{font-size:0.85rem;color:rgba(255,255,255,0.4);max-width:500px;margin:0 auto 2rem}
+.decision-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.dec-btn{padding:0.8rem 2rem;border:none;border-radius:2px;font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s}
+.dec-btn:hover{opacity:0.85}
+.dec-a{background:#c4622d;color:white}
+.dec-b{background:#2e8b47;color:white}
+.dec-c{background:#d4a85c;color:#080d14}
+
+@media(max-width:768px){
+  .demo-nav-links,.demo-nav-cta{display:none!important}
+  .demo-trust,.cards-grid{grid-template-columns:repeat(2,1fr)!important}
+  .trust-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.06)!important}
+}
+</style>
+</head>
+<body>
+
+<div class="picker-nav">
+  <span class="picker-nav-title">Kunert — Farboptionen</span>
+  <div class="picker-btns">
+    <button class="picker-btn" data-opt="a" onclick="showOpt('a')">A — Warm Earth</button>
+    <button class="picker-btn" data-opt="b" onclick="showOpt('b')">B — Forest</button>
+    <button class="picker-btn" data-opt="c" onclick="showOpt('c')">C — Refined</button>
+  </div>
+</div>
+
+<!-- ═══ OPTION A ═══ -->
+<div class="option-section opt-a active" id="opt-a">
+
+  <div class="option-label" style="background:#0d0a08;padding-top:2.5rem;padding-bottom:1.5rem">
+    <div class="option-badge">Option A — Warm Earth</div>
+    <div class="option-name" style="font-family:'Playfair Display',serif;color:#F8F4EF">Anthrazit-Braun + Terracotta</div>
+    <p class="option-desc">Warme Erdtöne statt kaltem Navy. Terracotta als Akzentfarbe verbindet sich direkt mit Materialien, Handwerk und Innenraum. Einzigartig in der Region.</p>
+  </div>
+
+  <div class="swatch-row" style="background:#0d0a08">
+    <div class="sw"><div class="sw-dot" style="background:#0d0a08"></div><div class="sw-hex">#0d0a08</div><div class="sw-name">Schwarz</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#1a1410"></div><div class="sw-hex">#1a1410</div><div class="sw-name">Dunkel</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#2c2018"></div><div class="sw-hex">#2c2018</div><div class="sw-name">Mid</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#3d2c20"></div><div class="sw-hex">#3d2c20</div><div class="sw-name">Warm</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#c4622d"></div><div class="sw-hex">#c4622d</div><div class="sw-name">Terracotta ←</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#F8F4EF"></div><div class="sw-hex">#F8F4EF</div><div class="sw-name">Creme</div></div>
+  </div>
+
+  <nav class="demo-nav">
+    <div class="logo" style="display:flex;flex-direction:column;line-height:1">
+      <span class="demo-logo-name">Kunert</span>
+      <span class="demo-logo-sub">Renovierung · Leipzig</span>
+    </div>
+    <ul class="demo-nav-links">
+      <li><a href="#">Leistungen</a></li>
+      <li><a href="#">Projekte</a></li>
+      <li><a href="#">Über uns</a></li>
+    </ul>
+    <a href="#" class="demo-nav-cta">Anfragen</a>
+  </nav>
+
+  <div class="demo-hero">
+    <div class="demo-hero-content">
+      <p class="demo-eyebrow">Leipzig · Seit 2011</p>
+      <h1 class="demo-h1">Ihr Zuhause.<br><span>Neu gedacht.</span></h1>
+      <p class="demo-sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum.</p>
+      <button class="demo-btn-p">Jetzt anfragen</button>
+      <button class="demo-btn-g">WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="demo-trust">
+    <div class="trust-item"><div class="trust-num">13+</div><div class="trust-label">Jahre Erfahrung</div></div>
+    <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Projekte</div></div>
+    <div class="trust-item"><div class="trust-num">5,0 ★</div><div class="trust-label">Google</div></div>
+    <div class="trust-item"><div class="trust-num">HWK</div><div class="trust-label">Mitglied Leipzig</div></div>
+  </div>
+
+  <div class="demo-cards">
+    <p class="cards-eyebrow">Was wir anbieten</p>
+    <h2 class="cards-title">Unsere Leistungen</h2>
+    <div class="cards-grid">
+      <div class="card"><span class="card-icon">🪵</span><div class="card-title">Bodenbelag</div><div class="card-desc">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt.</div></div>
+      <div class="card"><span class="card-icon">🖌️</span><div class="card-title">Malerarbeiten</div><div class="card-desc">Innenraumgestaltung, Streicharbeiten und Farbberatung.</div></div>
+      <div class="card cta"><span class="card-icon">💬</span><div class="card-title">Kostenloses Angebot</div><div class="card-desc">Wir kommen vorbei und erstellen ein faires Angebot.</div><span class="card-arrow">Jetzt anfragen →</span></div>
+    </div>
+  </div>
+
+  <div class="demo-quote">
+    <blockquote>"Qualität sieht man. Sorgfalt spürt man."</blockquote>
+    <cite>Daniel Kunert · Raumausstatter Leipzig</cite>
+  </div>
+
+</div>
+
+<!-- ═══ OPTION B ═══ -->
+<div class="option-section opt-b" id="opt-b">
+
+  <div class="option-label" style="background:#060e08;padding-top:2.5rem;padding-bottom:1.5rem">
+    <div class="option-badge">Option B — Forest Premium</div>
+    <div class="option-name" style="font-family:'Playfair Display',serif;color:#F2FAF4">Waldgrün + Gold</div>
+    <p class="option-desc">Tiefes Dunkelgrün als Basis — unverwechselbar, exklusiv. Gold leuchtet auf Grün besonders stark. Luxury Interior Design Studio Feeling.</p>
+  </div>
+
+  <div class="swatch-row" style="background:#060e08">
+    <div class="sw"><div class="sw-dot" style="background:#060e08"></div><div class="sw-hex">#060e08</div><div class="sw-name">Schwarz</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#0a1a0d"></div><div class="sw-hex">#0a1a0d</div><div class="sw-name">Dunkel</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#102814"></div><div class="sw-hex">#102814</div><div class="sw-name">Mid</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#163520"></div><div class="sw-hex">#163520</div><div class="sw-name">Deep</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#f4c200"></div><div class="sw-hex">#f4c200</div><div class="sw-name">Gold ←</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#F2FAF4"></div><div class="sw-hex">#F2FAF4</div><div class="sw-name">Mint-Weiß</div></div>
+  </div>
+
+  <nav class="demo-nav">
+    <div class="logo" style="display:flex;flex-direction:column;line-height:1">
+      <span class="demo-logo-name">Kunert</span>
+      <span class="demo-logo-sub">Renovierung · Leipzig</span>
+    </div>
+    <ul class="demo-nav-links">
+      <li><a href="#">Leistungen</a></li>
+      <li><a href="#">Projekte</a></li>
+      <li><a href="#">Über uns</a></li>
+    </ul>
+    <a href="#" class="demo-nav-cta">Anfragen</a>
+  </nav>
+
+  <div class="demo-hero">
+    <div class="demo-hero-content">
+      <p class="demo-eyebrow">Leipzig · Seit 2011</p>
+      <h1 class="demo-h1">Ihr Zuhause.<br><span>Neu gedacht.</span></h1>
+      <p class="demo-sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum.</p>
+      <button class="demo-btn-p">Jetzt anfragen</button>
+      <button class="demo-btn-g">WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="demo-trust">
+    <div class="trust-item"><div class="trust-num">13+</div><div class="trust-label">Jahre Erfahrung</div></div>
+    <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Projekte</div></div>
+    <div class="trust-item"><div class="trust-num">5,0 ★</div><div class="trust-label">Google</div></div>
+    <div class="trust-item"><div class="trust-num">HWK</div><div class="trust-label">Mitglied Leipzig</div></div>
+  </div>
+
+  <div class="demo-cards">
+    <p class="cards-eyebrow">Was wir anbieten</p>
+    <h2 class="cards-title">Unsere Leistungen</h2>
+    <div class="cards-grid">
+      <div class="card"><span class="card-icon">🪵</span><div class="card-title">Bodenbelag</div><div class="card-desc">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt.</div></div>
+      <div class="card"><span class="card-icon">🖌️</span><div class="card-title">Malerarbeiten</div><div class="card-desc">Innenraumgestaltung, Streicharbeiten und Farbberatung.</div></div>
+      <div class="card cta"><span class="card-icon">💬</span><div class="card-title">Kostenloses Angebot</div><div class="card-desc">Wir kommen vorbei und erstellen ein faires Angebot.</div><span class="card-arrow">Jetzt anfragen →</span></div>
+    </div>
+  </div>
+
+  <div class="demo-quote">
+    <blockquote>"Qualität sieht man. Sorgfalt spürt man."</blockquote>
+    <cite>Daniel Kunert · Raumausstatter Leipzig</cite>
+  </div>
+
+</div>
+
+<!-- ═══ OPTION C ═══ -->
+<div class="option-section opt-c" id="opt-c">
+
+  <div class="option-label" style="background:#080d14;padding-top:2.5rem;padding-bottom:1.5rem">
+    <div class="option-badge">Option C — Refined</div>
+    <div class="option-name" style="font-family:'Playfair Display',serif;color:#F5F1EC">Navy + Champagner-Gold</div>
+    <p class="option-desc">Aktuelle Basis bleibt — nur Gold wird von Neon-Gelb zu warmem Champagner verfeinert. Weiß bekommt ein warmes Ivory. Geringstes Risiko, sofort edler.</p>
+  </div>
+
+  <div class="swatch-row" style="background:#080d14">
+    <div class="sw"><div class="sw-dot" style="background:#080d14"></div><div class="sw-hex">#080d14</div><div class="sw-name">Schwarz</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#0d1828"></div><div class="sw-hex">#0d1828</div><div class="sw-name">Dunkel</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#132040"></div><div class="sw-hex">#132040</div><div class="sw-name">Mid</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#1d3060"></div><div class="sw-hex">#1d3060</div><div class="sw-name">Navy</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#d4a85c"></div><div class="sw-hex">#d4a85c</div><div class="sw-name">Champagner ←</div></div>
+    <div class="sw"><div class="sw-dot" style="background:#F5F1EC"></div><div class="sw-hex">#F5F1EC</div><div class="sw-name">Ivory</div></div>
+  </div>
+
+  <nav class="demo-nav">
+    <div class="logo" style="display:flex;flex-direction:column;line-height:1">
+      <span class="demo-logo-name">Kunert</span>
+      <span class="demo-logo-sub">Renovierung · Leipzig</span>
+    </div>
+    <ul class="demo-nav-links">
+      <li><a href="#">Leistungen</a></li>
+      <li><a href="#">Projekte</a></li>
+      <li><a href="#">Über uns</a></li>
+    </ul>
+    <a href="#" class="demo-nav-cta">Anfragen</a>
+  </nav>
+
+  <div class="demo-hero">
+    <div class="demo-hero-content">
+      <p class="demo-eyebrow">Leipzig · Seit 2011</p>
+      <h1 class="demo-h1">Ihr Zuhause.<br><span>Neu gedacht.</span></h1>
+      <p class="demo-sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum.</p>
+      <button class="demo-btn-p">Jetzt anfragen</button>
+      <button class="demo-btn-g">WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="demo-trust">
+    <div class="trust-item"><div class="trust-num">13+</div><div class="trust-label">Jahre Erfahrung</div></div>
+    <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Projekte</div></div>
+    <div class="trust-item"><div class="trust-num">5,0 ★</div><div class="trust-label">Google</div></div>
+    <div class="trust-item"><div class="trust-num">HWK</div><div class="trust-label">Mitglied Leipzig</div></div>
+  </div>
+
+  <div class="demo-cards">
+    <p class="cards-eyebrow">Was wir anbieten</p>
+    <h2 class="cards-title">Unsere Leistungen</h2>
+    <div class="cards-grid">
+      <div class="card"><span class="card-icon">🪵</span><div class="card-title">Bodenbelag</div><div class="card-desc">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt.</div></div>
+      <div class="card"><span class="card-icon">🖌️</span><div class="card-title">Malerarbeiten</div><div class="card-desc">Innenraumgestaltung, Streicharbeiten und Farbberatung.</div></div>
+      <div class="card cta"><span class="card-icon">💬</span><div class="card-title">Kostenloses Angebot</div><div class="card-desc">Wir kommen vorbei und erstellen ein faires Angebot.</div><span class="card-arrow">Jetzt anfragen →</span></div>
+    </div>
+  </div>
+
+  <div class="demo-quote">
+    <blockquote>"Qualität sieht man. Sorgfalt spürt man."</blockquote>
+    <cite>Daniel Kunert · Raumausstatter Leipzig</cite>
+  </div>
+
+</div>
+
+<!-- ENTSCHEIDUNG -->
+<div class="decision-strip">
+  <h3>Welche Option soll umgesetzt werden?</h3>
+  <p>Einfach die gewünschte Option nennen — alle 4 Seiten werden sofort angepasst.</p>
+  <div class="decision-btns">
+    <button class="dec-btn dec-a">A nehmen — Terracotta</button>
+    <button class="dec-btn dec-b">B nehmen — Forest</button>
+    <button class="dec-btn dec-c">C nehmen — Champagner</button>
+  </div>
+</div>
+
+<script>
+function showOpt(opt) {
+  document.querySelectorAll('.option-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('opt-' + opt).classList.add('active');
+  document.querySelectorAll('.picker-btn').forEach(b => b.style.fontWeight = b.dataset.opt === opt ? '700' : '500');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// Start mit Option A aktiv
+showOpt('a');
+</script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunert Renovierung Leipzig — Bodenbelag, Maler & Raumgestaltung</title>
+<meta name="description" content="Kunert Renovierung Leipzig — Ihr Experte für Bodenbelag, Malerarbeiten, Tapezieren und Raumgestaltung. Seit 2011. Jetzt kostenlosen Kostenvoranschlag anfragen.">
+<meta property="og:title" content="Kunert Renovierung Leipzig">
+<meta property="og:description" content="Professionelle Renovierung & Raumgestaltung in Leipzig seit 2011.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Kunert Renovierung","description":"Renovierung, Bodenbelag, Malerarbeiten und Raumgestaltung in Leipzig","address":{"@type":"PostalAddress","streetAddress":"Saarländer Str. 42","addressLocality":"Leipzig","postalCode":"04179","addressCountry":"DE"},"telephone":"+4917880922955","openingHours":"Mo-Fr 07:00-18:00","areaServed":"Leipzig","foundingDate":"2011"}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--black:#0e0f13;--dark:#14161c;--mid:#1e2029;--navy:#282b38;--gold:#c9a85c;--gold2:#a8882e;--white:#FAFAF8;--light:#F2F0EC;--cream:#EAE6DC;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.loader-word{display:flex;gap:2px;overflow:hidden}
+.loader-letter{font-family:var(--serif);font-size:clamp(3rem,8vw,7rem);font-weight:900;color:var(--white);letter-spacing:0.12em;transform:translateY(100%);opacity:0;display:inline-block}
+.loader-letter.gold{color:var(--gold)}
+.loader-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left}
+#loader.done{opacity:0;transition:opacity 0.6s ease 0.2s;pointer-events:none}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;transition:background 0.4s,padding 0.3s}
+header.scrolled{background:rgba(14,15,19,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,92,0.12)}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.logo-sub{font-size:0.65rem;font-weight:500;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,250,248,0.75);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:0.55rem 1.4rem;border-radius:2px;font-weight:700!important;transition:background 0.2s,transform 0.2s!important}
+.nav-cta:hover{background:var(--gold2)!important;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--white);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* HERO */
+#hero{position:relative;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.38);z-index:0}
+.hero-grain{position:absolute;inset:0;z-index:1;opacity:0.28;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(14,15,19,0.78) 0%,rgba(14,15,19,0.15) 100%)}
+.hero-content{position:relative;z-index:3;padding:0 8%;max-width:900px}
+.hero-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;transform:translateY(20px)}
+.hero-h1{font-family:var(--serif);font-size:clamp(3rem,6.5vw,6rem);font-weight:900;line-height:1.15;margin-bottom:1.5rem;clip-path:inset(0 100% -0.25em 0)}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:300;color:rgba(250,250,248,0.8);max-width:520px;margin-bottom:2.5rem;opacity:0;transform:translateY(20px)}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-primary{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold);color:var(--black);padding:0.9rem 2.2rem;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;transition:background 0.25s,transform 0.25s;cursor:pointer;border:none}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.6rem;border:1.5px solid rgba(201,168,92,0.5);color:var(--white);padding:0.9rem 2.2rem;font-weight:600;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;border-radius:2px;transition:border-color 0.25s,background 0.25s,transform 0.25s;cursor:pointer;background:none}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,168,92,0.08);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.5}
+.hero-scroll span{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase}
+.scroll-arrow{width:20px;height:30px;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;position:relative}
+.scroll-arrow::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--white);border-radius:50%;animation:scrollDot 1.5s ease-in-out infinite}
+@keyframes scrollDot{0%,100%{opacity:1;transform:translateX(-50%) translateY(0)}50%{opacity:0;transform:translateX(-50%) translateY(12px)}}
+
+/* SECTIONS */
+section{padding:6rem 5%;position:relative}
+.section-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}
+.section-sub{font-size:1rem;font-weight:300;color:rgba(250,250,248,0.65);max-width:560px;line-height:1.7}
+.section-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:2.5rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,92,0.3);padding-bottom:3px;transition:border-color 0.2s,gap 0.2s}
+.section-link:hover{border-color:var(--gold);gap:0.75rem}
+
+/* TRUST */
+#trust{background:var(--cream);border:none;padding:3.5rem 5%}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.trust-item{text-align:center;padding:1.5rem 1rem;border-right:1px solid rgba(14,15,19,0.1)}
+.trust-item:last-child{border-right:none}
+.trust-num{font-family:var(--serif);font-size:clamp(2.5rem,4vw,3.5rem);font-weight:900;color:var(--gold);line-height:1;margin-bottom:0.4rem}
+.trust-label{font-size:0.8rem;font-weight:500;letter-spacing:0.08em;color:rgba(14,15,19,0.5);text-transform:uppercase}
+
+/* LEISTUNGEN PREVIEW */
+#leistungen{background:var(--cream);color:var(--black)}
+#leistungen .section-eyebrow{color:var(--gold)}
+#leistungen .section-title{color:var(--black)}
+#leistungen .section-sub{color:rgba(14,15,19,0.6)}
+#leistungen .section-link{color:var(--gold)}
+.leistungen-header{margin-bottom:4rem}
+.leistungen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.leistung-card{background:var(--white);padding:2.5rem 2rem;transition:box-shadow 0.3s,transform 0.3s;position:relative;overflow:hidden;cursor:default;border-radius:3px;box-shadow:0 2px 12px rgba(14,15,19,0.07)}
+.leistung-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,92,0.04),transparent);opacity:0;transition:opacity 0.3s}
+.leistung-card:hover{box-shadow:0 8px 28px rgba(201,168,92,0.14);transform:translateY(-3px)}
+.leistung-card:hover::before{opacity:1}
+.leistung-card.cta-card{background:var(--gold);cursor:pointer;box-shadow:0 2px 12px rgba(201,168,92,0.3)}
+.leistung-card.cta-card:hover{background:var(--gold2);box-shadow:0 8px 28px rgba(201,168,92,0.45)}
+.leistung-icon{font-size:2.2rem;margin-bottom:1.5rem;display:block}
+.leistung-title{font-family:var(--serif);font-size:1.35rem;font-weight:700;margin-bottom:0.75rem;color:var(--black)}
+.leistung-desc{font-size:0.88rem;font-weight:300;color:rgba(14,15,19,0.58);line-height:1.65}
+.cta-card .leistung-title{color:var(--white);font-size:1.5rem}
+.cta-card .leistung-desc{color:rgba(250,247,242,0.82)}
+.cta-arrow{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;font-weight:700;font-size:0.9rem;color:var(--white);text-transform:uppercase;letter-spacing:0.08em}
+
+/* ÜBER UNS */
+#ueber-uns{background:var(--dark);display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+.ueber-content{padding:6rem 5%;display:flex;flex-direction:column;justify-content:center;background:var(--cream);color:var(--black)}
+.ueber-content .section-title{color:var(--black)}
+.ueber-content .section-sub{color:rgba(14,15,19,0.6)}
+.ueber-img{position:relative;overflow:hidden;min-height:500px}
+.ueber-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.68) saturate(0.85);transition:transform 6s ease}
+.ueber-img:hover img{transform:scale(1.04)}
+.ueber-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,var(--cream) 0%,transparent 42%)}
+.ueber-quote{display:block;margin-top:2rem;padding-left:1.5rem;border-left:3px solid var(--gold);font-family:var(--serif);font-size:1.15rem;font-weight:700;font-style:italic;color:var(--gold2);line-height:1.5}
+.ueber-since{display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:2rem}
+.ueber-since-num{font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--gold);line-height:1}
+.ueber-since-text{font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(14,15,19,0.45);line-height:1.4}
+
+/* BEFORE/AFTER */
+#vorher-nachher{background:var(--light);padding:6rem 5%}
+#vorher-nachher .section-title{color:var(--black)}
+#vorher-nachher .section-sub{color:rgba(14,15,19,0.6)}
+.ba-header{text-align:center;margin-bottom:3.5rem}
+.ba-header .section-sub{margin:0 auto}
+.ba-wrapper{position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;border-radius:4px;cursor:ew-resize;user-select:none}
+.ba-after{position:absolute;inset:0}
+.ba-after img{width:100%;height:100%;object-fit:cover}
+.ba-before{position:absolute;inset:0;width:50%;overflow:hidden}
+.ba-before img{width:900px;max-width:none;height:100%;object-fit:cover;object-position:left}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%);z-index:5}
+.ba-handle-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(201,168,92,0.25)}
+.ba-label{position:absolute;top:1rem;padding:0.35rem 0.8rem;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;z-index:6}
+.ba-label-vorher{left:1rem;background:rgba(14,15,19,0.85);color:var(--light)}
+.ba-label-nachher{right:1rem;background:var(--gold);color:var(--black)}
+
+/* PROJEKTE PREVIEW */
+#projekte{background:var(--dark)}
+.projekte-header{margin-bottom:3.5rem}
+.projekte-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.projekt-item{overflow:hidden;position:relative;cursor:pointer}
+.projekt-item:first-child{grid-column:span 2}
+.projekt-item img{width:100%;height:280px;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1),filter 0.4s;filter:brightness(0.72) saturate(0.85)}
+.projekt-item:first-child img{height:340px}
+.projekt-item:hover img{transform:scale(1.06);filter:brightness(0.9) saturate(1)}
+.projekt-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,15,19,0.82) 0%,transparent 55%);padding:1.5rem;display:flex;align-items:flex-end;opacity:0;transition:opacity 0.3s}
+.projekt-item:hover .projekt-overlay{opacity:1}
+.projekt-info-title{font-family:var(--serif);font-size:1rem;font-weight:700}
+.projekt-info-loc{font-size:0.75rem;color:var(--gold);margin-top:0.2rem}
+
+/* BEWERTUNGEN */
+#bewertungen{background:var(--light);color:var(--black)}
+#bewertungen .section-eyebrow{color:var(--gold)}
+#bewertungen .section-title{color:var(--black)}
+#bewertungen .section-sub{color:rgba(14,15,19,0.6)}
+.bewertungen-header{text-align:center;margin-bottom:3.5rem}
+.bewertungen-header .section-sub{margin:0 auto}
+.bew-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.bew-card{background:var(--white);padding:2rem;border-radius:3px;border:none;box-shadow:0 2px 14px rgba(14,15,19,0.08);transition:box-shadow 0.3s,transform 0.3s}
+.bew-card:hover{box-shadow:0 8px 28px rgba(201,168,92,0.14);transform:translateY(-4px)}
+.bew-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:1rem}
+.bew-text{font-size:0.9rem;font-weight:300;line-height:1.7;color:rgba(14,15,19,0.72);margin-bottom:1.5rem}
+.bew-author{display:flex;align-items:center;gap:0.75rem}
+.bew-avatar{width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--gold)}
+.bew-name{font-weight:600;font-size:0.85rem;color:var(--black)}
+.bew-loc{font-size:0.75rem;color:rgba(14,15,19,0.4)}
+.bew-google{display:flex;align-items:center;gap:0.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(14,15,19,0.08);font-size:0.72rem;font-weight:500;color:rgba(14,15,19,0.4)}
+.g-dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* CTA-STRIP */
+#cta-strip{background:var(--gold);padding:5rem 5%;text-align:center}
+#cta-strip h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;margin-bottom:1rem;color:var(--black)}
+#cta-strip p{font-size:1rem;font-weight:400;color:rgba(14,15,19,0.65);max-width:500px;margin:0 auto 2.5rem}
+#cta-strip .strip-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+#cta-strip .btn-primary{background:var(--black);color:var(--white)}
+#cta-strip .btn-primary:hover{background:var(--dark)}
+#cta-strip .btn-ghost{border-color:rgba(14,15,19,0.35);color:var(--black)}
+#cta-strip .btn-ghost:hover{border-color:var(--black);background:rgba(14,15,19,0.08)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+.foot-brand .logo-name{font-size:1.5rem}
+.foot-brand p{margin-top:1rem;font-size:0.85rem;font-weight:300;color:rgba(250,250,248,0.45);line-height:1.7;max-width:280px}
+.foot-col h4{font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.foot-col ul li a{font-size:0.85rem;color:rgba(250,250,248,0.5);transition:color 0.2s}
+.foot-col ul li a:hover{color:var(--white)}
+.foot-bottom{background:var(--black);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.04);font-size:0.75rem;color:rgba(250,250,248,0.3)}
+.foot-bottom a{color:rgba(250,250,248,0.3);transition:color 0.2s}
+.foot-bottom a:hover{color:var(--gold)}
+.ust{font-size:0.7rem;color:rgba(250,250,248,0.2);margin-top:1rem}
+
+/* SLIDER DRAWERS */
+.slider-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.slider-overlay.open{opacity:1;pointer-events:all}
+.slider-panel{position:fixed;top:0;right:0;bottom:0;width:min(540px,100%);background:var(--dark);z-index:2001;overflow-y:auto;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:3rem 2.5rem}
+.slider-panel.open{transform:translateX(0)}
+.slider-close{position:sticky;top:0;float:right;background:var(--mid);border:none;color:var(--white);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.slider-close:hover{background:var(--navy)}
+.slider-panel h2{font-family:var(--serif);font-size:1.8rem;color:var(--gold);margin-bottom:2rem;margin-top:1rem}
+.slider-panel h3{font-size:1rem;font-weight:700;margin:1.5rem 0 0.5rem;color:var(--gold)}
+.slider-panel p{font-size:0.88rem;font-weight:300;line-height:1.75;color:rgba(250,250,248,0.7)}
+
+/* WHATSAPP */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:1500;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;animation:waPulse 2.5s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.12);animation:none}
+.wa-float svg{width:30px;height:30px;fill:white}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.65),0 0 0 12px rgba(37,211,102,0.1)}}
+
+/* SCROLL REVEAL */
+.fu{opacity:0;transform:translateY(40px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* COOKIE */
+#cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:1800;background:var(--dark);border-top:1px solid rgba(201,168,92,0.15);padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+#cookie-bar p{font-size:0.8rem;color:rgba(250,250,248,0.6);flex:1}
+#cookie-bar a{color:var(--gold)}
+#cookie-bar button{background:var(--gold);color:var(--black);border:none;padding:0.55rem 1.4rem;font-weight:700;font-size:0.8rem;border-radius:2px;cursor:pointer;white-space:nowrap}
+
+/* LENIS SCROLL — section borders removed, bg handled by JS */
+#trust{border:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,1fr)}.leistungen-grid{grid-template-columns:repeat(2,1fr)}.bew-grid{grid-template-columns:1fr}footer{grid-template-columns:1fr 1fr}.foot-brand{grid-column:span 2}#ueber-uns{grid-template-columns:1fr}.ueber-img{min-height:350px;order:-1}.projekte-grid{grid-template-columns:1fr 1fr}.projekt-item:first-child{grid-column:span 2}}
+@media(max-width:680px){.nav-links{display:none}.burger{display:flex}.leistungen-grid{grid-template-columns:1fr}.projekte-grid{grid-template-columns:1fr}.projekt-item:first-child{grid-column:span 1}footer{grid-template-columns:1fr}.foot-brand{grid-column:span 1}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-word">
+    <span class="loader-letter">K</span><span class="loader-letter">U</span><span class="loader-letter">N</span><span class="loader-letter">E</span><span class="loader-letter gold">R</span><span class="loader-letter gold">T</span>
+  </div>
+  <div class="loader-line"></div>
+</div>
+
+<header id="header">
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="logo-name">Kunert</span>
+      <span class="logo-sub">Renovierung · Leipzig</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="#ueber-uns">Über uns</a></li>
+      <li><a href="#bewertungen">Bewertungen</a></li>
+      <li><a href="kontakt.html" class="nav-cta magnetic">Anfragen</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="leistungen.html" class="mm-link">Leistungen</a>
+  <a href="projekte.html" class="mm-link">Projekte</a>
+  <a href="#ueber-uns" class="mm-link">Über uns</a>
+  <a href="#bewertungen" class="mm-link">Bewertungen</a>
+  <a href="kontakt.html" class="mm-link" style="color:var(--gold)">Anfragen</a>
+</div>
+
+<section id="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="none"
+    src="https://assets.mixkit.co/videos/2296/2296-1080.mp4"></video>
+  <div class="hero-grain"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Leipzig · Seit 2011</p>
+    <h1 class="hero-h1">Ihr Zuhause.<br><span style="color:var(--gold)">Neu gedacht.</span></h1>
+    <p class="hero-sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum in Leipzig und Umgebung.</p>
+    <div class="hero-actions">
+      <a href="kontakt.html" class="btn-primary magnetic">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Jetzt anfragen
+      </a>
+      <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-arrow"></div><span>Scroll</span></div>
+</section>
+
+<section id="trust">
+  <div class="trust-grid">
+    <div class="trust-item fu"><div class="trust-num" data-count="13">0</div><div class="trust-label">Jahre Erfahrung</div></div>
+    <div class="trust-item fu d1"><div class="trust-num" data-count="500">0</div><div class="trust-label">Projekte abgeschlossen</div></div>
+    <div class="trust-item fu d2"><div class="trust-num">5,0 ★</div><div class="trust-label">Google Bewertung</div></div>
+    <div class="trust-item fu d3"><div class="trust-num">HWK</div><div class="trust-label">Mitglied Leipzig</div></div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="leistungen-header">
+    <p class="section-eyebrow fu">Was wir anbieten</p>
+    <h2 class="section-title fu d1">Unsere Leistungen</h2>
+    <p class="section-sub fu d2">Von der Planung bis zur Fertigstellung — alles aus einer Hand. Jedes Projekt wird mit gleichem Ehrgeiz und handwerklichem Können umgesetzt.</p>
+    <a href="leistungen.html" class="section-link fu d3">Alle Leistungen im Detail <span>→</span></a>
+  </div>
+  <div class="leistungen-grid">
+    <div class="leistung-card fu">
+      <span class="leistung-icon">🪵</span>
+      <h3 class="leistung-title">Bodenbelag</h3>
+      <p class="leistung-desc">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt für ein perfektes Ergebnis, das Jahrzehnte hält.</p>
+    </div>
+    <div class="leistung-card fu d1">
+      <span class="leistung-icon">🖌️</span>
+      <h3 class="leistung-title">Malerarbeiten</h3>
+      <p class="leistung-desc">Innenraumgestaltung, Streicharbeiten und Farbberatung. Saubere Abklebearbeiten, streifenfreies Ergebnis.</p>
+    </div>
+    <div class="leistung-card fu d2">
+      <span class="leistung-icon">🏠</span>
+      <h3 class="leistung-title">Tapezieren</h3>
+      <p class="leistung-desc">Moderne Tapeten, Mustertapeten oder strukturierte Oberflächen — exakte Verarbeitung für ein makelloses Bild.</p>
+    </div>
+    <div class="leistung-card fu d1">
+      <span class="leistung-icon">🔨</span>
+      <h3 class="leistung-title">Komplettrenovierung</h3>
+      <p class="leistung-desc">Wohnung, Haus oder Büro — wir koordinieren alle Gewerke und liefern einen schlüsselfertigen Wohnraum.</p>
+    </div>
+    <div class="leistung-card fu d2">
+      <span class="leistung-icon">📐</span>
+      <h3 class="leistung-title">Innenausbau</h3>
+      <p class="leistung-desc">Trockenbau, Zwischenwände, Deckengestaltung und individuelle Raumlösungen für optimale Raumnutzung.</p>
+    </div>
+    <div class="leistung-card cta-card fu d3" onclick="window.location='kontakt.html'">
+      <span class="leistung-icon">💬</span>
+      <h3 class="leistung-title">Kostenloses Angebot</h3>
+      <p class="leistung-desc">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Angebot.</p>
+      <span class="cta-arrow">Jetzt anfragen →</span>
+    </div>
+  </div>
+</section>
+
+<section id="ueber-uns">
+  <div class="ueber-content">
+    <p class="section-eyebrow fu">Wer steckt dahinter</p>
+    <div class="ueber-since fu d1">
+      <span class="ueber-since-num">2011</span>
+      <span class="ueber-since-text">Gegründet<br>in Leipzig</span>
+    </div>
+    <h2 class="section-title fu d2" style="max-width:440px">Handwerk mit<br><span style="color:var(--gold)">Leidenschaft.</span></h2>
+    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:1.5rem" class="fu d3">Ich bin Daniel Kunert, Raumausstatter und Renovierungsexperte aus Leipzig. Seit über 13 Jahren verwandle ich Räume in echte Wohlfühlbereiche — ob Altbausanierung, Neubauausbau oder komplette Wohnungsrenovierung.</p>
+    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:2rem" class="fu d4">Kein Subunternehmer, kein Weitervermitteln. Sie bekommen mich — persönlich, pünktlich, präzise. Meine Kunden empfehlen mich weiter, weil das Ergebnis für sich spricht.</p>
+    <span class="ueber-quote fu d4">"Qualität sieht man. Sorgfalt spürt man."</span>
+    <a href="kontakt.html" class="btn-primary magnetic" style="margin-top:2.5rem;width:fit-content">Kontakt aufnehmen</a>
+  </div>
+  <div class="ueber-img">
+    <img src="https://images.pexels.com/photos/5493654/pexels-photo-5493654.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Daniel Kunert Renovierungsteam bei der Arbeit" loading="lazy">
+  </div>
+</section>
+
+<section id="vorher-nachher">
+  <div class="ba-header">
+    <p class="section-eyebrow fu">Der Unterschied</p>
+    <h2 class="section-title fu d1">Vorher &amp; Nachher</h2>
+    <p class="section-sub fu d2">Ziehen Sie den Regler und erleben Sie die Transformation. Altbausanierung Wohnzimmer Leipzig-Lindenau, 2024.</p>
+  </div>
+  <div class="ba-wrapper fu d3" id="baSlider">
+    <div class="ba-after">
+      <img src="https://images.pexels.com/photos/3952034/pexels-photo-3952034.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Nach der Renovierung" loading="lazy">
+    </div>
+    <div class="ba-before" id="baBefore">
+      <img src="https://images.pexels.com/photos/16767783/pexels-photo-16767783.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Vor der Renovierung" loading="lazy">
+    </div>
+    <div class="ba-handle" id="baHandle">
+      <div class="ba-handle-circle">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#080d14" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <span class="ba-label ba-label-vorher">Vorher</span>
+    <span class="ba-label ba-label-nachher">Nachher</span>
+  </div>
+</section>
+
+<section id="projekte">
+  <div class="projekte-header">
+    <p class="section-eyebrow fu">Unsere Arbeit</p>
+    <h2 class="section-title fu d1">Aktuelle Projekte</h2>
+    <p class="section-sub fu d2">Eine Auswahl abgeschlossener Aufträge in Leipzig und Umgebung.</p>
+    <a href="projekte.html" class="section-link fu d3">Alle Projekte ansehen <span>→</span></a>
+  </div>
+  <div class="projekte-grid">
+    <div class="projekt-item fu">
+      <img src="https://images.pexels.com/photos/8288962/pexels-photo-8288962.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wohnzimmer Komplettrenovierung" loading="lazy">
+      <div class="projekt-overlay"><div><div class="projekt-info-title">Wohnzimmer Komplettrenovierung</div><div class="projekt-info-loc">📍 Leipzig-Plagwitz</div></div></div>
+    </div>
+    <div class="projekt-item fu d1">
+      <img src="https://images.pexels.com/photos/4263067/pexels-photo-4263067.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bodenverlegung" loading="lazy">
+      <div class="projekt-overlay"><div><div class="projekt-info-title">Parkett Neuverlegung</div><div class="projekt-info-loc">📍 Leipzig-Gohlis</div></div></div>
+    </div>
+    <div class="projekt-item fu d1">
+      <img src="https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Malerarbeiten" loading="lazy">
+      <div class="projekt-overlay"><div><div class="projekt-info-title">Malerarbeiten Innenraum</div><div class="projekt-info-loc">📍 Leipzig-Schleußig</div></div></div>
+    </div>
+    <div class="projekt-item fu d2">
+      <img src="https://images.pexels.com/photos/7045358/pexels-photo-7045358.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Badezimmer" loading="lazy">
+      <div class="projekt-overlay"><div><div class="projekt-info-title">Badezimmer Renovierung</div><div class="projekt-info-loc">📍 Leipzig-Connewitz</div></div></div>
+    </div>
+    <div class="projekt-item fu d3">
+      <img src="https://images.pexels.com/photos/17069809/pexels-photo-17069809.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Modernes Bad" loading="lazy">
+      <div class="projekt-overlay"><div><div class="projekt-info-title">Bad Neugestaltung</div><div class="projekt-info-loc">📍 Leipzig-Reudnitz</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="bewertungen">
+  <div class="bewertungen-header">
+    <p class="section-eyebrow fu">Was Kunden sagen</p>
+    <h2 class="section-title fu d1">Echte Erfahrungen</h2>
+    <p class="section-sub fu d2">Über 50 zufriedene Kunden in Leipzig und Umgebung — lesen Sie selbst.</p>
+  </div>
+  <div class="bew-grid">
+    <div class="bew-card fu">
+      <div class="bew-stars">★★★★★</div>
+      <p class="bew-text">„Herr Kunert hat unsere komplette Wohnung renoviert. Pünktlich, sauber, absolut professionell. Das neue Parkett sieht fantastisch aus — wir werden ihn definitiv weiterempfehlen."</p>
+      <div class="bew-author"><div class="bew-avatar">S</div><div><div class="bew-name">Sabine M.</div><div class="bew-loc">Leipzig-Schleußig</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+    </div>
+    <div class="bew-card fu d1">
+      <div class="bew-stars">★★★★★</div>
+      <p class="bew-text">„Tolle Beratung vorab, schnelle Umsetzung, kein Dreck hinterlassen. Die Tapezierarbeiten sehen aus wie aus dem Einrichtungsmagazin. Bereits mehrfach weiterempfohlen."</p>
+      <div class="bew-author"><div class="bew-avatar">T</div><div><div class="bew-name">Thomas K.</div><div class="bew-loc">Leipzig-Gohlis</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+    </div>
+    <div class="bew-card fu d2">
+      <div class="bew-stars">★★★★★</div>
+      <p class="bew-text">„Super Beratung, faire Preise und top Ausführung. Die Bodenverlegung war in zwei Tagen erledigt — sauber, präzise, ohne eine Einschränkung. Absolut empfehlenswert!"</p>
+      <div class="bew-author"><div class="bew-avatar">P</div><div><div class="bew-name">Petra L.</div><div class="bew-loc">Leipzig-Lindenau</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-strip">
+  <h2 class="fu">Bereit für Ihr<br><span style="color:var(--gold)">neues Zuhause?</span></h2>
+  <p class="fu d1">Kostenlos anfragen — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Erstangebot.</p>
+  <div class="strip-btns fu d2">
+    <a href="kontakt.html" class="btn-primary magnetic">Kostenloses Angebot anfordern</a>
+    <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost">WhatsApp schreiben</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">
+    <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></div>
+    <p>Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
+    <p class="ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
+  </div>
+  <div class="foot-col">
+    <h4>Seiten</h4>
+    <ul>
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </div>
+  <div class="foot-col">
+    <h4>Kontakt</h4>
+    <ul>
+      <li><a href="tel:+4917880922955">0178 8092955</a></li>
+      <li><a href="https://wa.me/491788092955">WhatsApp</a></li>
+      <li><a href="kontakt.html">Anfrage stellen</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="foot-bottom">
+  <span>© <span id="year"></span> Kunert Renovierung · Leipzig</span>
+  <div style="display:flex;gap:1.5rem">
+    <a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a>
+    <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a>
+  </div>
+</div>
+
+<div class="slider-overlay" id="imp-overlay" onclick="closeSlider('imp')"></div>
+<div class="slider-panel" id="imp-panel">
+  <button class="slider-close" onclick="closeSlider('imp')">✕</button>
+  <h2>Impressum</h2>
+  <h3>§ 5 TMG</h3><p>Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
+  <h3>Kontakt</h3><p>Tel: 0178 8092955 · info@kunert-renovierung.de</p>
+  <h3>Umsatzsteuer</h3><p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+  <h3>Handwerkskammer</h3><p>Mitglied der Handwerkskammer zu Leipzig</p>
+</div>
+<div class="slider-overlay" id="dsg-overlay" onclick="closeSlider('dsg')"></div>
+<div class="slider-panel" id="dsg-panel">
+  <button class="slider-close" onclick="closeSlider('dsg')">✕</button>
+  <h2>Datenschutz</h2>
+  <h3>Verantwortlicher</h3><p>Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
+  <h3>Kontaktformular</h3><p>Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h3>Hosting</h3><p>GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
+  <h3>Google Maps</h3><p>Google Ireland Ltd., Dublin 4, Irland. Datenschutz: policies.google.com/privacy</p>
+  <h3>Ihre Rechte</h3><p>Auskunft, Berichtigung, Löschung und Einschränkung jederzeit auf Anfrage.</p>
+</div>
+
+<a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<div id="cookie-bar">
+  <p>Diese Website verwendet technisch notwendige Cookies. <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></p>
+  <button onclick="document.getElementById('cookie-bar').style.display='none'">OK</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── Loader ── */
+(function(){
+  const letters=document.querySelectorAll('.loader-letter'),line=document.querySelector('.loader-line'),loader=document.getElementById('loader');
+  gsap.to(letters,{y:0,opacity:1,duration:.6,stagger:.07,ease:'power3.out',onComplete(){
+    gsap.to(line,{scaleX:1,duration:.4,ease:'power2.inOut'});
+    setTimeout(()=>{loader.classList.add('done');setTimeout(()=>{loader.style.display='none';revealHero();},700);},600);
+  }});
+})();
+function revealHero(){
+  gsap.to('.hero-h1',{clipPath:'inset(0 0% -0.25em 0)',duration:1.1,ease:'power4.out',delay:.1});
+  gsap.to('.hero-eyebrow',{opacity:1,y:0,duration:.7,delay:.4,ease:'power3.out'});
+  gsap.to('.hero-sub',{opacity:1,y:0,duration:.7,delay:.6,ease:'power3.out'});
+  gsap.to('.hero-actions',{opacity:1,y:0,duration:.7,delay:.8,ease:'power3.out'});
+}
+
+/* ── Header scroll ── */
+window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+/* ── Nav burger ── */
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
+document.querySelectorAll('.mm-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');mm.classList.remove('open');document.body.style.overflow='';}));
+
+/* ── Scroll reveal ── */
+const fuObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fu').forEach(el=>fuObs.observe(el));
+
+/* ── Counters ── */
+function animCount(el,t){let s=null;const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/1600,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t)+'+';if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
+const cObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){animCount(x.target,parseInt(x.target.dataset.count));cObs.unobserve(x.target);}}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+
+/* ── Before/After slider ── */
+(function(){
+  const w=document.getElementById('baSlider'),b=document.getElementById('baBefore'),h=document.getElementById('baHandle');
+  if(!w)return;let d=false;
+  const s=x=>{const r=w.getBoundingClientRect(),p=Math.max(5,Math.min(95,((x-r.left)/r.width)*100));b.style.width=p+'%';h.style.left=p+'%';};
+  w.addEventListener('mousedown',e=>{d=true;s(e.clientX);});
+  w.addEventListener('touchstart',e=>{d=true;s(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('mousemove',e=>{if(d)s(e.clientX);});
+  window.addEventListener('touchmove',e=>{if(d)s(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('mouseup',()=>d=false);window.addEventListener('touchend',()=>d=false);
+})();
+
+/* ── Magnetic buttons ── */
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mouseenter',()=>btn.style.transition='transform 0.1s ease');
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.28}px,${(e.clientY-r.top-r.height/2)*.28}px)`;});
+  btn.addEventListener('mouseleave',()=>{btn.style.transition='transform 0.4s cubic-bezier(0.16,1,0.3,1)';btn.style.transform='';});
+});
+
+/* ── Hero video parallax ── */
+gsap.to('.hero-video',{yPercent:20,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+/* ── BACKGROUND COLOR TRANSITIONS ──
+   Zeitbasiert (duration), nicht scroll-gekoppelt. ── */
+const bgFlow = [
+  { sel:'#trust',         to:'#EAE6DC', from:'#5c4f3a' },
+  { sel:'#vorher-nachher',to:'#F2F0EC', from:'#6b6760' },
+  { sel:'#bewertungen',   to:'#F2F0EC', from:'#6b6760' },
+  { sel:'#cta-strip',     to:'#c9a85c', from:'#8a7030' },
+  { sel:'footer',         to:'#0e0f13', from:'#1e2029' },
+];
+bgFlow.forEach(({sel, to, from}) => {
+  gsap.set(sel, {backgroundColor: from});
+  ScrollTrigger.create({
+    trigger: sel,
+    start: 'top 68%',
+    onEnter:     () => gsap.to(sel, {backgroundColor: to,   duration: 1.6, ease:'power3.inOut'}),
+    onLeaveBack: () => gsap.to(sel, {backgroundColor: from, duration: 1.2, ease:'power3.inOut'}),
+  });
+});
+
+/* ── Legal sliders ── */
+function openSlider(id){document.getElementById(id+'-overlay').classList.add('open');document.getElementById(id+'-panel').classList.add('open');document.body.style.overflow='hidden';}
+function closeSlider(id){document.getElementById(id+'-overlay').classList.remove('open');document.getElementById(id+'-panel').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
