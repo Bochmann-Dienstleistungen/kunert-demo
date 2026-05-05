@@ -25,6 +25,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{background:var(--gold);color:var(--black)!important;padding:0.55rem 1.4rem;border-radius:2px;font-weight:700!important;transition:background 0.2s!important}
 .nav-cta:hover{background:var(--gold2)!important}
+.lang-toggle{background:transparent;border:1px solid rgba(201,168,92,0.4);color:var(--gold);padding:0.3rem 0.75rem;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.lang-toggle:hover{background:rgba(201,168,92,0.12);border-color:var(--gold)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -119,46 +121,47 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
 
 <header id="header">
   <nav>
-    <a href="index.html" class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></a>
+    <a href="index.html" class="logo"><span class="logo-name">Kunert</span><span class="logo-sub" data-i18n="nav.logo-sub">Renovierung · Leipzig</span></a>
     <ul class="nav-links">
-      <li><a href="leistungen.html" class="active">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="index.html#ueber-uns">Über uns</a></li>
-      <li><a href="index.html#bewertungen">Bewertungen</a></li>
-      <li><a href="kontakt.html" class="nav-cta">Anfragen</a></li>
+      <li><a href="leistungen.html" class="active" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="index.html#ueber-uns" data-i18n="nav.about">Über uns</a></li>
+      <li><a href="index.html#bewertungen" data-i18n="nav.reviews">Bewertungen</a></li>
+      <li><a href="kontakt.html" class="nav-cta" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="leistungen.html" class="mm-link">Leistungen</a>
-  <a href="projekte.html" class="mm-link">Projekte</a>
-  <a href="index.html#ueber-uns" class="mm-link">Über uns</a>
-  <a href="index.html#bewertungen" class="mm-link">Bewertungen</a>
-  <a href="kontakt.html" class="mm-link" style="color:var(--gold)">Anfragen</a>
+  <a href="leistungen.html" class="mm-link" data-i18n="nav.services">Leistungen</a>
+  <a href="projekte.html" class="mm-link" data-i18n="nav.projects">Projekte</a>
+  <a href="index.html#ueber-uns" class="mm-link" data-i18n="nav.about">Über uns</a>
+  <a href="index.html#bewertungen" class="mm-link" data-i18n="nav.reviews">Bewertungen</a>
+  <a href="kontakt.html" class="mm-link" style="color:var(--gold)" data-i18n="nav.contact">Anfragen</a>
 </div>
 
 <div class="page-hero">
-  <p class="page-hero-eyebrow fu">Was wir können</p>
-  <h1 class="page-hero-title fu d1">Unsere<br><span style="color:var(--gold)">Leistungen.</span></h1>
-  <p class="page-hero-sub fu d2">Handwerkliche Exzellenz seit 2011 — von der einfachen Malerarbeit bis zur kompletten Wohnungsrenovierung. Alles aus einer Hand, mit einem Ansprechpartner.</p>
+  <p class="page-hero-eyebrow fu" data-i18n="lp.eyebrow">Was wir können</p>
+  <h1 class="page-hero-title fu d1" data-i18n-html="lp.title">Unsere<br><span style="color:var(--gold)">Leistungen.</span></h1>
+  <p class="page-hero-sub fu d2" data-i18n="lp.sub">Handwerkliche Exzellenz seit 2011 — von der einfachen Malerarbeit bis zur kompletten Wohnungsrenovierung. Alles aus einer Hand, mit einem Ansprechpartner.</p>
 </div>
 
 <div class="leistung-row fu">
   <div class="leistung-row-content">
     <span class="row-num">01</span>
     <span class="row-icon">🪵</span>
-    <h2 class="row-title">Bodenbelag</h2>
-    <p class="row-desc">Ein neuer Boden verändert den Charakter eines Raumes komplett. Wir verlegen alle gängigen Bodenbeläge fachgerecht und sauber — egal ob Parkett für Wohnzimmer, Vinyl für Küche und Bad oder Teppich fürs Schlafzimmer.</p>
+    <h2 class="row-title" data-i18n="lp.r1.t">Bodenbelag</h2>
+    <p class="row-desc" data-i18n="lp.r1.d">Ein neuer Boden verändert den Charakter eines Raumes komplett. Wir verlegen alle gängigen Bodenbeläge fachgerecht und sauber — egal ob Parkett für Wohnzimmer, Vinyl für Küche und Bad oder Teppich fürs Schlafzimmer.</p>
     <ul class="row-list">
-      <li>Parkett &amp; Dielenböden (Verlegen, Schleifen, Versiegeln)</li>
-      <li>Laminat &amp; Vinyl (Klicksystem oder vollflächig verklebt)</li>
-      <li>Teppichböden (Wohn- und Schlafräume)</li>
-      <li>Fliesen &amp; Naturstein (Bad, Küche, Flur)</li>
-      <li>Trittschalldämmung &amp; Unterlagsmaterial</li>
+      <li data-i18n="lp.r1.l1">Parkett &amp; Dielenböden (Verlegen, Schleifen, Versiegeln)</li>
+      <li data-i18n="lp.r1.l2">Laminat &amp; Vinyl (Klicksystem oder vollflächig verklebt)</li>
+      <li data-i18n="lp.r1.l3">Teppichböden (Wohn- und Schlafräume)</li>
+      <li data-i18n="lp.r1.l4">Fliesen &amp; Naturstein (Bad, Küche, Flur)</li>
+      <li data-i18n="lp.r1.l5">Trittschalldämmung &amp; Unterlagsmaterial</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r1.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
   <div class="leistung-row-img">
     <img src="https://images.pexels.com/photos/4263067/pexels-photo-4263067.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bodenbelag verlegen" loading="lazy">
@@ -172,16 +175,16 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
   <div class="leistung-row-content">
     <span class="row-num">02</span>
     <span class="row-icon">🖌️</span>
-    <h2 class="row-title">Malerarbeiten</h2>
-    <p class="row-desc">Frische Farbe, saubere Kanten, streifenfreies Ergebnis. Wir übernehmen die komplette Malerarbeit — von der Farbberatung über sorgfältiges Abkleben bis zum abschließenden Finish ohne Nacharbeit.</p>
+    <h2 class="row-title" data-i18n="lp.r2.t">Malerarbeiten</h2>
+    <p class="row-desc" data-i18n="lp.r2.d">Frische Farbe, saubere Kanten, streifenfreies Ergebnis. Wir übernehmen die komplette Malerarbeit — von der Farbberatung über sorgfältiges Abkleben bis zum abschließenden Finish ohne Nacharbeit.</p>
     <ul class="row-list">
-      <li>Wände und Decken streichen (Innenraum)</li>
-      <li>Farbberatung &amp; Musterflächen</li>
-      <li>Spachteln &amp; Grundierung</li>
-      <li>Heizkörper und Türen lackieren</li>
-      <li>Fassadenanstrich (Außenbereich)</li>
+      <li data-i18n="lp.r2.l1">Wände und Decken streichen (Innenraum)</li>
+      <li data-i18n="lp.r2.l2">Farbberatung &amp; Musterflächen</li>
+      <li data-i18n="lp.r2.l3">Spachteln &amp; Grundierung</li>
+      <li data-i18n="lp.r2.l4">Heizkörper und Türen lackieren</li>
+      <li data-i18n="lp.r2.l5">Fassadenanstrich (Außenbereich)</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r2.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
 </div>
 
@@ -189,16 +192,16 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
   <div class="leistung-row-content">
     <span class="row-num">03</span>
     <span class="row-icon">🏠</span>
-    <h2 class="row-title">Tapezieren</h2>
-    <p class="row-desc">Tapeten setzen Akzente und verleihen Räumen Charakter. Wir verarbeiten alle Tapetenarten — von einfachen Raufasern über Vliestapeten bis hin zu anspruchsvollen Mustertapeten mit exaktem Rapport.</p>
+    <h2 class="row-title" data-i18n="lp.r3.t">Tapezieren</h2>
+    <p class="row-desc" data-i18n="lp.r3.d">Tapeten setzen Akzente und verleihen Räumen Charakter. Wir verarbeiten alle Tapetenarten — von einfachen Raufasern über Vliestapeten bis hin zu anspruchsvollen Mustertapeten mit exaktem Rapport.</p>
     <ul class="row-list">
-      <li>Vliestapeten &amp; Papiertapeten</li>
-      <li>Strukturtapeten &amp; Mustertapeten</li>
-      <li>Raufaser (Grundierung + 2× Anstrich)</li>
-      <li>Glasfasertapeten für Sonderflächen</li>
-      <li>Alttapete abnehmen &amp; Untergrund vorbereiten</li>
+      <li data-i18n="lp.r3.l1">Vliestapeten &amp; Papiertapeten</li>
+      <li data-i18n="lp.r3.l2">Strukturtapeten &amp; Mustertapeten</li>
+      <li data-i18n="lp.r3.l3">Raufaser (Grundierung + 2× Anstrich)</li>
+      <li data-i18n="lp.r3.l4">Glasfasertapeten für Sonderflächen</li>
+      <li data-i18n="lp.r3.l5">Alttapete abnehmen &amp; Untergrund vorbereiten</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r3.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
   <div class="leistung-row-img">
     <img src="https://images.pexels.com/photos/5493656/pexels-photo-5493656.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tapezierarbeiten" loading="lazy">
@@ -212,16 +215,16 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
   <div class="leistung-row-content">
     <span class="row-num">04</span>
     <span class="row-icon">🔨</span>
-    <h2 class="row-title">Komplett&shy;renovierung</h2>
-    <p class="row-desc">Ein Anruf, ein Ansprechpartner, ein Ergebnis. Wir übernehmen die komplette Koordination Ihrer Renovierung — Boden, Wände, Decken, Türen, alles in einem Zug, ohne Terminchaos.</p>
+    <h2 class="row-title" data-i18n-html="lp.r4.t">Komplett&shy;renovierung</h2>
+    <p class="row-desc" data-i18n="lp.r4.d">Ein Anruf, ein Ansprechpartner, ein Ergebnis. Wir übernehmen die komplette Koordination Ihrer Renovierung — Boden, Wände, Decken, Türen, alles in einem Zug, ohne Terminchaos.</p>
     <ul class="row-list">
-      <li>Wohnungsrenovierung vor Einzug/Auszug</li>
-      <li>Altbausanierung &amp; Bestandsrenovierung</li>
-      <li>Renovierung nach Wasserschaden</li>
-      <li>Komplettübergabe bezugsfertig</li>
-      <li>Fotodokumentation aller Gewerke</li>
+      <li data-i18n="lp.r4.l1">Wohnungsrenovierung vor Einzug/Auszug</li>
+      <li data-i18n="lp.r4.l2">Altbausanierung &amp; Bestandsrenovierung</li>
+      <li data-i18n="lp.r4.l3">Renovierung nach Wasserschaden</li>
+      <li data-i18n="lp.r4.l4">Komplettübergabe bezugsfertig</li>
+      <li data-i18n="lp.r4.l5">Fotodokumentation aller Gewerke</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r4.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
 </div>
 
@@ -229,16 +232,16 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
   <div class="leistung-row-content">
     <span class="row-num">05</span>
     <span class="row-icon">📐</span>
-    <h2 class="row-title">Innenausbau</h2>
-    <p class="row-desc">Wände verschieben, Räume neu denken. Wir übernehmen leichte Trockenbauarbeiten, Deckenverkleidungen und individuelle Raumlösungen, die Ihren Wohnraum optimal nutzen.</p>
+    <h2 class="row-title" data-i18n="lp.r5.t">Innenausbau</h2>
+    <p class="row-desc" data-i18n="lp.r5.d">Wände verschieben, Räume neu denken. Wir übernehmen leichte Trockenbauarbeiten, Deckenverkleidungen und individuelle Raumlösungen, die Ihren Wohnraum optimal nutzen.</p>
     <ul class="row-list">
-      <li>Trockenbau &amp; Rigipswände</li>
-      <li>Deckenabhängung &amp; Akustikdecken</li>
-      <li>Nischen &amp; Einbausituationen</li>
-      <li>Licht- und Steckdosenaussparungen</li>
-      <li>Fenster- und Türlaibungen verkleiden</li>
+      <li data-i18n="lp.r5.l1">Trockenbau &amp; Rigipswände</li>
+      <li data-i18n="lp.r5.l2">Deckenabhängung &amp; Akustikdecken</li>
+      <li data-i18n="lp.r5.l3">Nischen &amp; Einbausituationen</li>
+      <li data-i18n="lp.r5.l4">Licht- und Steckdosenaussparungen</li>
+      <li data-i18n="lp.r5.l5">Fenster- und Türlaibungen verkleiden</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r5.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
   <div class="leistung-row-img">
     <img src="https://images.pexels.com/photos/8288962/pexels-photo-8288962.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Innenausbau moderne Wohnung" loading="lazy">
@@ -252,110 +255,111 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
   <div class="leistung-row-content">
     <span class="row-num">06</span>
     <span class="row-icon">✨</span>
-    <h2 class="row-title">Raumgestaltung</h2>
-    <p class="row-desc">Farbe, Material und Oberfläche spielen zusammen — ein stimmiges Gesamtbild entsteht durch die richtige Kombination. Wir beraten Sie zu Farbkonzepten, Materialwahl und Lichtführung.</p>
+    <h2 class="row-title" data-i18n="lp.r6.t">Raumgestaltung</h2>
+    <p class="row-desc" data-i18n="lp.r6.d">Farbe, Material und Oberfläche spielen zusammen — ein stimmiges Gesamtbild entsteht durch die richtige Kombination. Wir beraten Sie zu Farbkonzepten, Materialwahl und Lichtführung.</p>
     <ul class="row-list">
-      <li>Farbkonzept für ganzes Objekt</li>
-      <li>Materialberatung Boden + Wand</li>
-      <li>Akzentwände &amp; Gestaltungsideen</li>
-      <li>Kombinationsberatung Tapete + Boden</li>
-      <li>Musterflächen vor Auftragserteilung</li>
+      <li data-i18n="lp.r6.l1">Farbkonzept für ganzes Objekt</li>
+      <li data-i18n="lp.r6.l2">Materialberatung Boden + Wand</li>
+      <li data-i18n="lp.r6.l3">Akzentwände &amp; Gestaltungsideen</li>
+      <li data-i18n="lp.r6.l4">Kombinationsberatung Tapete + Boden</li>
+      <li data-i18n="lp.r6.l5">Musterflächen vor Auftragserteilung</li>
     </ul>
-    <a href="kontakt.html" class="row-cta">Angebot anfragen <span>→</span></a>
+    <a href="kontakt.html" class="row-cta"><span data-i18n="lp.r6.cta">Angebot anfragen</span> <span>→</span></a>
   </div>
 </div>
 
 <div class="extras">
-  <h2 class="fu">Weitere Leistungen</h2>
-  <p class="extras-sub fu d1">Rund um die Renovierung — was Sie sonst noch benötigen</p>
+  <h2 class="fu" data-i18n="lp.ex.title">Weitere Leistungen</h2>
+  <p class="extras-sub fu d1" data-i18n="lp.ex.sub">Rund um die Renovierung — was Sie sonst noch benötigen</p>
   <div class="extras-grid">
     <div class="extra-item fu">
       <span class="extra-icon">🔑</span>
-      <div class="extra-title">Schlüsselübergabe</div>
-      <div class="extra-desc">Wir können auf Wunsch die Wohnung unbeaufsichtigt fertigstellen — Schlüsselübergabe auf Vertrauensbasis.</div>
+      <div class="extra-title" data-i18n="lp.ex.1t">Schlüsselübergabe</div>
+      <div class="extra-desc" data-i18n="lp.ex.1d">Wir können auf Wunsch die Wohnung unbeaufsichtigt fertigstellen — Schlüsselübergabe auf Vertrauensbasis.</div>
     </div>
     <div class="extra-item fu d1">
       <span class="extra-icon">🚛</span>
-      <div class="extra-title">Entsorgung</div>
-      <div class="extra-desc">Altbeläge, Tapeten und Bauschutt werden fachgerecht entsorgt. Kein Aufwand für Sie.</div>
+      <div class="extra-title" data-i18n="lp.ex.2t">Entsorgung</div>
+      <div class="extra-desc" data-i18n="lp.ex.2d">Altbeläge, Tapeten und Bauschutt werden fachgerecht entsorgt. Kein Aufwand für Sie.</div>
     </div>
     <div class="extra-item fu d2">
       <span class="extra-icon">📸</span>
-      <div class="extra-title">Fotodokumentation</div>
-      <div class="extra-desc">Alle Gewerke werden fotografisch dokumentiert — sinnvoll für Vermieter, Verwaltungen und Versicherungen.</div>
+      <div class="extra-title" data-i18n="lp.ex.3t">Fotodokumentation</div>
+      <div class="extra-desc" data-i18n="lp.ex.3d">Alle Gewerke werden fotografisch dokumentiert — sinnvoll für Vermieter, Verwaltungen und Versicherungen.</div>
     </div>
     <div class="extra-item fu d3">
       <span class="extra-icon">⚡</span>
-      <div class="extra-title">Express-Service</div>
-      <div class="extra-desc">Kurzfristiger Termin nötig? Wir versuchen Notfälle (z.B. nach Wasserschaden) innerhalb von 48 Stunden zu beginnen.</div>
+      <div class="extra-title" data-i18n="lp.ex.4t">Express-Service</div>
+      <div class="extra-desc" data-i18n="lp.ex.4d">Kurzfristiger Termin nötig? Wir versuchen Notfälle (z.B. nach Wasserschaden) innerhalb von 48 Stunden zu beginnen.</div>
     </div>
   </div>
 </div>
 
 <div class="cta-strip">
-  <h2 class="fu">Wir kommen einfach vorbei.</h2>
-  <p class="fu d1">Kostenlose Besichtigung — unverbindliches Angebot — klares Festpreis-Angebot innerhalb von 48 Stunden.</p>
+  <h2 class="fu" data-i18n="lp.cta.title">Wir kommen einfach vorbei.</h2>
+  <p class="fu d1" data-i18n="lp.cta.sub">Kostenlose Besichtigung — unverbindliches Angebot — klares Festpreis-Angebot innerhalb von 48 Stunden.</p>
   <div class="strip-btns fu d2">
-    <a href="kontakt.html" class="btn-primary">Termin vereinbaren</a>
-    <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost">WhatsApp</a>
+    <a href="kontakt.html" class="btn-primary" data-i18n="lp.cta.btn">Termin vereinbaren</a>
+    <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost" data-i18n="hero.cta2">WhatsApp</a>
   </div>
 </div>
 
 <footer>
   <div class="foot-brand">
     <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></div>
-    <p>Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
-    <p class="ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
+    <p data-i18n="footer.brand-text">Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
+    <p class="ust" data-i18n="footer.ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
   </div>
   <div class="foot-col">
-    <h4>Seiten</h4>
+    <h4 data-i18n="footer.pages">Seiten</h4>
     <ul>
-      <li><a href="index.html">Startseite</a></li>
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+      <li><a href="leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="kontakt.html" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
   </div>
   <div class="foot-col">
-    <h4>Kontakt</h4>
+    <h4 data-i18n="footer.contact">Kontakt</h4>
     <ul>
       <li><a href="tel:+4917880922955">0178 8092955</a></li>
       <li><a href="https://wa.me/491788092955">WhatsApp</a></li>
-      <li><a href="kontakt.html">Anfrage stellen</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></li>
+      <li><a href="kontakt.html" data-i18n="footer.inquiry">Anfrage stellen</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a></li>
     </ul>
   </div>
 </footer>
 <div class="foot-bottom">
   <span>© <span id="year"></span> Kunert Renovierung · Leipzig</span>
   <div style="display:flex;gap:1.5rem">
-    <a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a>
-    <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a>
+    <a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a>
+    <a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a>
   </div>
 </div>
 
 <div class="slider-overlay" id="imp-overlay" onclick="closeSlider('imp')"></div>
 <div class="slider-panel" id="imp-panel">
   <button class="slider-close" onclick="closeSlider('imp')">✕</button>
-  <h2>Impressum</h2>
-  <h3>§ 5 TMG</h3><p>Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
-  <h3>Kontakt</h3><p>Tel: 0178 8092955 · info@kunert-renovierung.de</p>
-  <h3>Umsatzsteuer</h3><p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+  <h2 data-i18n="legal.imprint.title">Impressum</h2>
+  <h3 data-i18n="legal.imprint.s1">§ 5 TMG</h3><p data-i18n="legal.imprint.addr">Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
+  <h3 data-i18n="legal.imprint.s2">Kontakt</h3><p data-i18n="legal.imprint.contact">Tel: 0178 8092955 · info@kunert-renovierung.de</p>
+  <h3 data-i18n="legal.imprint.s3">Umsatzsteuer</h3><p data-i18n="legal.imprint.vat">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 </div>
 <div class="slider-overlay" id="dsg-overlay" onclick="closeSlider('dsg')"></div>
 <div class="slider-panel" id="dsg-panel">
   <button class="slider-close" onclick="closeSlider('dsg')">✕</button>
-  <h2>Datenschutz</h2>
-  <h3>Verantwortlicher</h3><p>Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
-  <h3>Kontaktformular</h3><p>Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-  <h3>Hosting</h3><p>GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
+  <h2 data-i18n="legal.privacy.title">Datenschutz</h2>
+  <h3 data-i18n="legal.privacy.s1">Verantwortlicher</h3><p data-i18n="legal.privacy.ctrl">Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
+  <h3 data-i18n="legal.privacy.s2">Kontaktformular</h3><p data-i18n="legal.privacy.form">Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h3 data-i18n="legal.privacy.s3">Hosting</h3><p data-i18n="legal.privacy.hosting">GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
 </div>
 
 <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
 </a>
 
+<script src="i18n.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 window.addEventListener('scroll',()=>document.getElementById('header').classList.toggle('scrolled',scrollY>60),{passive:true});

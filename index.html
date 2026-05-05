@@ -41,6 +41,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{background:var(--gold);color:var(--black)!important;padding:0.55rem 1.4rem;border-radius:2px;font-weight:700!important;transition:background 0.2s,transform 0.2s!important}
 .nav-cta:hover{background:var(--gold2)!important;transform:translateY(-1px)}
+.lang-toggle{background:transparent;border:1px solid rgba(201,168,92,0.4);color:var(--gold);padding:0.3rem 0.75rem;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.lang-toggle:hover{background:rgba(201,168,92,0.12);border-color:var(--gold)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -244,25 +246,26 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
   <nav>
     <a href="index.html" class="logo">
       <span class="logo-name">Kunert</span>
-      <span class="logo-sub">Renovierung · Leipzig</span>
+      <span class="logo-sub" data-i18n="nav.logo-sub">Renovierung · Leipzig</span>
     </a>
     <ul class="nav-links">
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="#ueber-uns">Über uns</a></li>
-      <li><a href="#bewertungen">Bewertungen</a></li>
-      <li><a href="kontakt.html" class="nav-cta magnetic">Anfragen</a></li>
+      <li><a href="leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="#ueber-uns" data-i18n="nav.about">Über uns</a></li>
+      <li><a href="#bewertungen" data-i18n="nav.reviews">Bewertungen</a></li>
+      <li><a href="kontakt.html" class="nav-cta magnetic" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="leistungen.html" class="mm-link">Leistungen</a>
-  <a href="projekte.html" class="mm-link">Projekte</a>
-  <a href="#ueber-uns" class="mm-link">Über uns</a>
-  <a href="#bewertungen" class="mm-link">Bewertungen</a>
-  <a href="kontakt.html" class="mm-link" style="color:var(--gold)">Anfragen</a>
+  <a href="leistungen.html" class="mm-link" data-i18n="nav.services">Leistungen</a>
+  <a href="projekte.html" class="mm-link" data-i18n="nav.projects">Projekte</a>
+  <a href="#ueber-uns" class="mm-link" data-i18n="nav.about">Über uns</a>
+  <a href="#bewertungen" class="mm-link" data-i18n="nav.reviews">Bewertungen</a>
+  <a href="kontakt.html" class="mm-link" style="color:var(--gold)" data-i18n="nav.contact">Anfragen</a>
 </div>
 
 <section id="hero">
@@ -271,17 +274,17 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
   <div class="hero-grain"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Leipzig · Seit 2011</p>
-    <h1 class="hero-h1">Ihr Zuhause.<br><span style="color:var(--gold)">Neu gedacht.</span></h1>
-    <p class="hero-sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum in Leipzig und Umgebung.</p>
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Leipzig · Seit 2011</p>
+    <h1 class="hero-h1" data-i18n-html="hero.h1">Ihr Zuhause.<br><span style="color:var(--gold)">Neu gedacht.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Professionelle Renovierung, Bodenbelag & Raumgestaltung — handwerkliche Präzision für Ihren Wohnraum in Leipzig und Umgebung.</p>
     <div class="hero-actions">
       <a href="kontakt.html" class="btn-primary magnetic">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Jetzt anfragen
+        <span data-i18n="hero.cta1">Jetzt anfragen</span>
       </a>
       <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        WhatsApp
+        <span data-i18n="hero.cta2">WhatsApp</span>
       </a>
     </div>
   </div>
@@ -290,67 +293,67 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
 
 <section id="trust">
   <div class="trust-grid">
-    <div class="trust-item fu"><div class="trust-num" data-count="13">0</div><div class="trust-label">Jahre Erfahrung</div></div>
-    <div class="trust-item fu d1"><div class="trust-num" data-count="500">0</div><div class="trust-label">Projekte abgeschlossen</div></div>
-    <div class="trust-item fu d2"><div class="trust-num">5,0 ★</div><div class="trust-label">Google Bewertung</div></div>
-    <div class="trust-item fu d3"><div class="trust-num">HWK</div><div class="trust-label">Mitglied Leipzig</div></div>
+    <div class="trust-item fu"><div class="trust-num" data-count="13">0</div><div class="trust-label" data-i18n="trust.years">Jahre Erfahrung</div></div>
+    <div class="trust-item fu d1"><div class="trust-num" data-count="500">0</div><div class="trust-label" data-i18n="trust.projects">Projekte abgeschlossen</div></div>
+    <div class="trust-item fu d2"><div class="trust-num">5,0 ★</div><div class="trust-label" data-i18n="trust.rating">Google Bewertung</div></div>
+    <div class="trust-item fu d3"><div class="trust-num">HWK</div><div class="trust-label" data-i18n="trust.hwk">Mitglied Leipzig</div></div>
   </div>
 </section>
 
 <section id="leistungen">
   <div class="leistungen-header">
-    <p class="section-eyebrow fu">Was wir anbieten</p>
-    <h2 class="section-title fu d1">Unsere Leistungen</h2>
-    <p class="section-sub fu d2">Von der Planung bis zur Fertigstellung — alles aus einer Hand. Jedes Projekt wird mit gleichem Ehrgeiz und handwerklichem Können umgesetzt.</p>
-    <a href="leistungen.html" class="section-link fu d3">Alle Leistungen im Detail <span>→</span></a>
+    <p class="section-eyebrow fu" data-i18n="home.s.eyebrow">Was wir anbieten</p>
+    <h2 class="section-title fu d1" data-i18n="home.s.title">Unsere Leistungen</h2>
+    <p class="section-sub fu d2" data-i18n="home.s.sub">Von der Planung bis zur Fertigstellung — alles aus einer Hand. Jedes Projekt wird mit gleichem Ehrgeiz und handwerklichem Können umgesetzt.</p>
+    <a href="leistungen.html" class="section-link fu d3"><span data-i18n="home.s.link">Alle Leistungen im Detail</span> <span>→</span></a>
   </div>
   <div class="leistungen-grid">
     <div class="leistung-card fu">
       <span class="leistung-icon">🪵</span>
-      <h3 class="leistung-title">Bodenbelag</h3>
-      <p class="leistung-desc">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt für ein perfektes Ergebnis, das Jahrzehnte hält.</p>
+      <h3 class="leistung-title" data-i18n="home.s.floor.t">Bodenbelag</h3>
+      <p class="leistung-desc" data-i18n="home.s.floor.d">Parkett, Laminat, Vinyl, Teppich und Fliesen — fachgerecht verlegt für ein perfektes Ergebnis, das Jahrzehnte hält.</p>
     </div>
     <div class="leistung-card fu d1">
       <span class="leistung-icon">🖌️</span>
-      <h3 class="leistung-title">Malerarbeiten</h3>
-      <p class="leistung-desc">Innenraumgestaltung, Streicharbeiten und Farbberatung. Saubere Abklebearbeiten, streifenfreies Ergebnis.</p>
+      <h3 class="leistung-title" data-i18n="home.s.paint.t">Malerarbeiten</h3>
+      <p class="leistung-desc" data-i18n="home.s.paint.d">Innenraumgestaltung, Streicharbeiten und Farbberatung. Saubere Abklebearbeiten, streifenfreies Ergebnis.</p>
     </div>
     <div class="leistung-card fu d2">
       <span class="leistung-icon">🏠</span>
-      <h3 class="leistung-title">Tapezieren</h3>
-      <p class="leistung-desc">Moderne Tapeten, Mustertapeten oder strukturierte Oberflächen — exakte Verarbeitung für ein makelloses Bild.</p>
+      <h3 class="leistung-title" data-i18n="home.s.wall.t">Tapezieren</h3>
+      <p class="leistung-desc" data-i18n="home.s.wall.d">Moderne Tapeten, Mustertapeten oder strukturierte Oberflächen — exakte Verarbeitung für ein makelloses Bild.</p>
     </div>
     <div class="leistung-card fu d1">
       <span class="leistung-icon">🔨</span>
-      <h3 class="leistung-title">Komplettrenovierung</h3>
-      <p class="leistung-desc">Wohnung, Haus oder Büro — wir koordinieren alle Gewerke und liefern einen schlüsselfertigen Wohnraum.</p>
+      <h3 class="leistung-title" data-i18n="home.s.comp.t">Komplettrenovierung</h3>
+      <p class="leistung-desc" data-i18n="home.s.comp.d">Wohnung, Haus oder Büro — wir koordinieren alle Gewerke und liefern einen schlüsselfertigen Wohnraum.</p>
     </div>
     <div class="leistung-card fu d2">
       <span class="leistung-icon">📐</span>
-      <h3 class="leistung-title">Innenausbau</h3>
-      <p class="leistung-desc">Trockenbau, Zwischenwände, Deckengestaltung und individuelle Raumlösungen für optimale Raumnutzung.</p>
+      <h3 class="leistung-title" data-i18n="home.s.int.t">Innenausbau</h3>
+      <p class="leistung-desc" data-i18n="home.s.int.d">Trockenbau, Zwischenwände, Deckengestaltung und individuelle Raumlösungen für optimale Raumnutzung.</p>
     </div>
     <div class="leistung-card cta-card fu d3" onclick="window.location='kontakt.html'">
       <span class="leistung-icon">💬</span>
-      <h3 class="leistung-title">Kostenloses Angebot</h3>
-      <p class="leistung-desc">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Angebot.</p>
-      <span class="cta-arrow">Jetzt anfragen →</span>
+      <h3 class="leistung-title" data-i18n="home.s.cta.t">Kostenloses Angebot</h3>
+      <p class="leistung-desc" data-i18n="home.s.cta.d">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Angebot.</p>
+      <span class="cta-arrow" data-i18n="home.s.cta.btn">Jetzt anfragen →</span>
     </div>
   </div>
 </section>
 
 <section id="ueber-uns">
   <div class="ueber-content">
-    <p class="section-eyebrow fu">Wer steckt dahinter</p>
+    <p class="section-eyebrow fu" data-i18n="about.eyebrow">Wer steckt dahinter</p>
     <div class="ueber-since fu d1">
       <span class="ueber-since-num">2011</span>
-      <span class="ueber-since-text">Gegründet<br>in Leipzig</span>
+      <span class="ueber-since-text" data-i18n-html="about.founded">Gegründet<br>in Leipzig</span>
     </div>
-    <h2 class="section-title fu d2" style="max-width:440px">Handwerk mit<br><span style="color:var(--gold)">Leidenschaft.</span></h2>
-    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:1.5rem" class="fu d3">Ich bin Daniel Kunert, Raumausstatter und Renovierungsexperte aus Leipzig. Seit über 13 Jahren verwandle ich Räume in echte Wohlfühlbereiche — ob Altbausanierung, Neubauausbau oder komplette Wohnungsrenovierung.</p>
-    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:2rem" class="fu d4">Kein Subunternehmer, kein Weitervermitteln. Sie bekommen mich — persönlich, pünktlich, präzise. Meine Kunden empfehlen mich weiter, weil das Ergebnis für sich spricht.</p>
-    <span class="ueber-quote fu d4">"Qualität sieht man. Sorgfalt spürt man."</span>
-    <a href="kontakt.html" class="btn-primary magnetic" style="margin-top:2.5rem;width:fit-content">Kontakt aufnehmen</a>
+    <h2 class="section-title fu d2" style="max-width:440px" data-i18n-html="about.title">Handwerk mit<br><span style="color:var(--gold)">Leidenschaft.</span></h2>
+    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:1.5rem" class="fu d3" data-i18n="about.p1">Ich bin Daniel Kunert, Raumausstatter und Renovierungsexperte aus Leipzig. Seit über 13 Jahren verwandle ich Räume in echte Wohlfühlbereiche — ob Altbausanierung, Neubauausbau oder komplette Wohnungsrenovierung.</p>
+    <p style="font-size:0.95rem;font-weight:300;line-height:1.8;color:rgba(14,15,19,0.65);max-width:480px;margin-bottom:2rem" class="fu d4" data-i18n="about.p2">Kein Subunternehmer, kein Weitervermitteln. Sie bekommen mich — persönlich, pünktlich, präzise. Meine Kunden empfehlen mich weiter, weil das Ergebnis für sich spricht.</p>
+    <span class="ueber-quote fu d4" data-i18n="about.quote">"Qualität sieht man. Sorgfalt spürt man."</span>
+    <a href="kontakt.html" class="btn-primary magnetic" style="margin-top:2.5rem;width:fit-content" data-i18n="about.cta">Kontakt aufnehmen</a>
   </div>
   <div class="ueber-img">
     <img src="https://images.pexels.com/photos/5493654/pexels-photo-5493654.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Daniel Kunert Renovierungsteam bei der Arbeit" loading="lazy">
@@ -359,9 +362,9 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
 
 <section id="vorher-nachher">
   <div class="ba-header">
-    <p class="section-eyebrow fu">Der Unterschied</p>
-    <h2 class="section-title fu d1">Vorher &amp; Nachher</h2>
-    <p class="section-sub fu d2">Ziehen Sie den Regler und erleben Sie die Transformation. Altbausanierung Wohnzimmer Leipzig-Lindenau, 2024.</p>
+    <p class="section-eyebrow fu" data-i18n="ba.eyebrow">Der Unterschied</p>
+    <h2 class="section-title fu d1" data-i18n-html="ba.title">Vorher &amp; Nachher</h2>
+    <p class="section-sub fu d2" data-i18n="ba.sub">Ziehen Sie den Regler und erleben Sie die Transformation. Altbausanierung Wohnzimmer Leipzig-Lindenau, 2024.</p>
   </div>
   <div class="ba-wrapper fu d3" id="baSlider">
     <div class="ba-after">
@@ -375,17 +378,17 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7" stroke="#080d14" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
-    <span class="ba-label ba-label-vorher">Vorher</span>
-    <span class="ba-label ba-label-nachher">Nachher</span>
+    <span class="ba-label ba-label-vorher" data-i18n="ba.before">Vorher</span>
+    <span class="ba-label ba-label-nachher" data-i18n="ba.after">Nachher</span>
   </div>
 </section>
 
 <section id="projekte">
   <div class="projekte-header">
-    <p class="section-eyebrow fu">Unsere Arbeit</p>
-    <h2 class="section-title fu d1">Aktuelle Projekte</h2>
-    <p class="section-sub fu d2">Eine Auswahl abgeschlossener Aufträge in Leipzig und Umgebung.</p>
-    <a href="projekte.html" class="section-link fu d3">Alle Projekte ansehen <span>→</span></a>
+    <p class="section-eyebrow fu" data-i18n="hp.eyebrow">Unsere Arbeit</p>
+    <h2 class="section-title fu d1" data-i18n="hp.title">Aktuelle Projekte</h2>
+    <p class="section-sub fu d2" data-i18n="hp.sub">Eine Auswahl abgeschlossener Aufträge in Leipzig und Umgebung.</p>
+    <a href="projekte.html" class="section-link fu d3"><span data-i18n="hp.link">Alle Projekte ansehen</span> <span>→</span></a>
   </div>
   <div class="projekte-grid">
     <div class="projekt-item fu">
@@ -413,93 +416,93 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
 
 <section id="bewertungen">
   <div class="bewertungen-header">
-    <p class="section-eyebrow fu">Was Kunden sagen</p>
-    <h2 class="section-title fu d1">Echte Erfahrungen</h2>
-    <p class="section-sub fu d2">Über 50 zufriedene Kunden in Leipzig und Umgebung — lesen Sie selbst.</p>
+    <p class="section-eyebrow fu" data-i18n="rev.eyebrow">Was Kunden sagen</p>
+    <h2 class="section-title fu d1" data-i18n="rev.title">Echte Erfahrungen</h2>
+    <p class="section-sub fu d2" data-i18n="rev.sub">Über 50 zufriedene Kunden in Leipzig und Umgebung — lesen Sie selbst.</p>
   </div>
   <div class="bew-grid">
     <div class="bew-card fu">
       <div class="bew-stars">★★★★★</div>
-      <p class="bew-text">„Herr Kunert hat unsere komplette Wohnung renoviert. Pünktlich, sauber, absolut professionell. Das neue Parkett sieht fantastisch aus — wir werden ihn definitiv weiterempfehlen."</p>
-      <div class="bew-author"><div class="bew-avatar">S</div><div><div class="bew-name">Sabine M.</div><div class="bew-loc">Leipzig-Schleußig</div></div></div>
-      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+      <p class="bew-text" data-i18n="rev.1">„Herr Kunert hat unsere komplette Wohnung renoviert. Pünktlich, sauber, absolut professionell. Das neue Parkett sieht fantastisch aus — wir werden ihn definitiv weiterempfehlen."</p>
+      <div class="bew-author"><div class="bew-avatar">S</div><div><div class="bew-name">Sabine M.</div><div class="bew-loc" data-i18n="rev.1.loc">Leipzig-Schleußig</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div><span data-i18n="rev.verified">Verifiziert via Google</span></div>
     </div>
     <div class="bew-card fu d1">
       <div class="bew-stars">★★★★★</div>
-      <p class="bew-text">„Tolle Beratung vorab, schnelle Umsetzung, kein Dreck hinterlassen. Die Tapezierarbeiten sehen aus wie aus dem Einrichtungsmagazin. Bereits mehrfach weiterempfohlen."</p>
-      <div class="bew-author"><div class="bew-avatar">T</div><div><div class="bew-name">Thomas K.</div><div class="bew-loc">Leipzig-Gohlis</div></div></div>
-      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+      <p class="bew-text" data-i18n="rev.2">„Tolle Beratung vorab, schnelle Umsetzung, kein Dreck hinterlassen. Die Tapezierarbeiten sehen aus wie aus dem Einrichtungsmagazin. Bereits mehrfach weiterempfohlen."</p>
+      <div class="bew-author"><div class="bew-avatar">T</div><div><div class="bew-name">Thomas K.</div><div class="bew-loc" data-i18n="rev.2.loc">Leipzig-Gohlis</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div><span data-i18n="rev.verified">Verifiziert via Google</span></div>
     </div>
     <div class="bew-card fu d2">
       <div class="bew-stars">★★★★★</div>
-      <p class="bew-text">„Super Beratung, faire Preise und top Ausführung. Die Bodenverlegung war in zwei Tagen erledigt — sauber, präzise, ohne eine Einschränkung. Absolut empfehlenswert!"</p>
-      <div class="bew-author"><div class="bew-avatar">P</div><div><div class="bew-name">Petra L.</div><div class="bew-loc">Leipzig-Lindenau</div></div></div>
-      <div class="bew-google"><div class="g-dot"></div>Verifiziert via Google</div>
+      <p class="bew-text" data-i18n="rev.3">„Super Beratung, faire Preise und top Ausführung. Die Bodenverlegung war in zwei Tagen erledigt — sauber, präzise, ohne eine Einschränkung. Absolut empfehlenswert!"</p>
+      <div class="bew-author"><div class="bew-avatar">P</div><div><div class="bew-name">Petra L.</div><div class="bew-loc" data-i18n="rev.3.loc">Leipzig-Lindenau</div></div></div>
+      <div class="bew-google"><div class="g-dot"></div><span data-i18n="rev.verified">Verifiziert via Google</span></div>
     </div>
   </div>
 </section>
 
 <section id="cta-strip">
-  <h2 class="fu">Bereit für Ihr<br><span style="color:var(--gold)">neues Zuhause?</span></h2>
-  <p class="fu d1">Kostenlos anfragen — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Erstangebot.</p>
+  <h2 class="fu" data-i18n-html="hcta.title">Bereit für Ihr<br><span style="color:var(--gold)">neues Zuhause?</span></h2>
+  <p class="fu d1" data-i18n="hcta.sub">Kostenlos anfragen — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Erstangebot.</p>
   <div class="strip-btns fu d2">
-    <a href="kontakt.html" class="btn-primary magnetic">Kostenloses Angebot anfordern</a>
-    <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost">WhatsApp schreiben</a>
+    <a href="kontakt.html" class="btn-primary magnetic" data-i18n="hcta.btn1">Kostenloses Angebot anfordern</a>
+    <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="btn-ghost" data-i18n="hcta.btn2">WhatsApp schreiben</a>
   </div>
 </section>
 
 <footer>
   <div class="foot-brand">
     <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></div>
-    <p>Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
-    <p class="ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
+    <p data-i18n="footer.brand-text">Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
+    <p class="ust" data-i18n="footer.ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
   </div>
   <div class="foot-col">
-    <h4>Seiten</h4>
+    <h4 data-i18n="footer.pages">Seiten</h4>
     <ul>
-      <li><a href="index.html">Startseite</a></li>
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+      <li><a href="leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="kontakt.html" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
   </div>
   <div class="foot-col">
-    <h4>Kontakt</h4>
+    <h4 data-i18n="footer.contact">Kontakt</h4>
     <ul>
       <li><a href="tel:+4917880922955">0178 8092955</a></li>
       <li><a href="https://wa.me/491788092955">WhatsApp</a></li>
-      <li><a href="kontakt.html">Anfrage stellen</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></li>
+      <li><a href="kontakt.html" data-i18n="footer.inquiry">Anfrage stellen</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a></li>
     </ul>
   </div>
 </footer>
 <div class="foot-bottom">
   <span>© <span id="year"></span> Kunert Renovierung · Leipzig</span>
   <div style="display:flex;gap:1.5rem">
-    <a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a>
-    <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a>
+    <a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a>
+    <a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a>
   </div>
 </div>
 
 <div class="slider-overlay" id="imp-overlay" onclick="closeSlider('imp')"></div>
 <div class="slider-panel" id="imp-panel">
   <button class="slider-close" onclick="closeSlider('imp')">✕</button>
-  <h2>Impressum</h2>
-  <h3>§ 5 TMG</h3><p>Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
-  <h3>Kontakt</h3><p>Tel: 0178 8092955 · info@kunert-renovierung.de</p>
-  <h3>Umsatzsteuer</h3><p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
-  <h3>Handwerkskammer</h3><p>Mitglied der Handwerkskammer zu Leipzig</p>
+  <h2 data-i18n="legal.imprint.title">Impressum</h2>
+  <h3 data-i18n="legal.imprint.s1">§ 5 TMG</h3><p data-i18n="legal.imprint.addr">Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
+  <h3 data-i18n="legal.imprint.s2">Kontakt</h3><p data-i18n="legal.imprint.contact">Tel: 0178 8092955 · info@kunert-renovierung.de</p>
+  <h3 data-i18n="legal.imprint.s3">Umsatzsteuer</h3><p data-i18n="legal.imprint.vat">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+  <h3 data-i18n="legal.imprint.s4">Handwerkskammer</h3><p data-i18n="legal.imprint.hwk">Mitglied der Handwerkskammer zu Leipzig</p>
 </div>
 <div class="slider-overlay" id="dsg-overlay" onclick="closeSlider('dsg')"></div>
 <div class="slider-panel" id="dsg-panel">
   <button class="slider-close" onclick="closeSlider('dsg')">✕</button>
-  <h2>Datenschutz</h2>
-  <h3>Verantwortlicher</h3><p>Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
-  <h3>Kontaktformular</h3><p>Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-  <h3>Hosting</h3><p>GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
-  <h3>Google Maps</h3><p>Google Ireland Ltd., Dublin 4, Irland. Datenschutz: policies.google.com/privacy</p>
-  <h3>Ihre Rechte</h3><p>Auskunft, Berichtigung, Löschung und Einschränkung jederzeit auf Anfrage.</p>
+  <h2 data-i18n="legal.privacy.title">Datenschutz</h2>
+  <h3 data-i18n="legal.privacy.s1">Verantwortlicher</h3><p data-i18n="legal.privacy.ctrl">Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
+  <h3 data-i18n="legal.privacy.s2">Kontaktformular</h3><p data-i18n="legal.privacy.form">Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h3 data-i18n="legal.privacy.s3">Hosting</h3><p data-i18n="legal.privacy.hosting">GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
+  <h3 data-i18n="legal.privacy.s4">Google Maps</h3><p data-i18n="legal.privacy.maps">Google Ireland Ltd., Dublin 4, Irland. Datenschutz: policies.google.com/privacy</p>
+  <h3 data-i18n="legal.privacy.s5">Ihre Rechte</h3><p data-i18n="legal.privacy.rights">Auskunft, Berichtigung, Löschung und Einschränkung jederzeit auf Anfrage.</p>
 </div>
 
 <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
@@ -507,10 +510,11 @@ footer{background:var(--black);border-top:none;padding:3rem 5%;display:grid;grid
 </a>
 
 <div id="cookie-bar">
-  <p>Diese Website verwendet technisch notwendige Cookies. <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></p>
-  <button onclick="document.getElementById('cookie-bar').style.display='none'">OK</button>
+  <p><span data-i18n="cookie.text">Diese Website verwendet technisch notwendige Cookies.</span> <a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a></p>
+  <button data-i18n="cookie.btn" onclick="document.getElementById('cookie-bar').style.display='none'">OK</button>
 </div>
 
+<script src="i18n.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>

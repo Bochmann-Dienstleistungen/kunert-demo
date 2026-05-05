@@ -25,6 +25,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{background:var(--gold);color:var(--black)!important;padding:0.55rem 1.4rem;border-radius:2px;font-weight:700!important;transition:background 0.2s!important}
 .nav-cta:hover,.nav-links a.active.nav-cta{background:var(--gold2)!important}
+.lang-toggle{background:transparent;border:1px solid rgba(201,168,92,0.4);color:var(--gold);padding:0.3rem 0.75rem;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.lang-toggle:hover{background:rgba(201,168,92,0.12);border-color:var(--gold)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -133,108 +135,109 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
 
 <header id="header">
   <nav>
-    <a href="index.html" class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></a>
+    <a href="index.html" class="logo"><span class="logo-name">Kunert</span><span class="logo-sub" data-i18n="nav.logo-sub">Renovierung · Leipzig</span></a>
     <ul class="nav-links">
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="index.html#ueber-uns">Über uns</a></li>
-      <li><a href="index.html#bewertungen">Bewertungen</a></li>
-      <li><a href="kontakt.html" class="nav-cta active">Anfragen</a></li>
+      <li><a href="leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="index.html#ueber-uns" data-i18n="nav.about">Über uns</a></li>
+      <li><a href="index.html#bewertungen" data-i18n="nav.reviews">Bewertungen</a></li>
+      <li><a href="kontakt.html" class="nav-cta active" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="leistungen.html" class="mm-link">Leistungen</a>
-  <a href="projekte.html" class="mm-link">Projekte</a>
-  <a href="index.html#ueber-uns" class="mm-link">Über uns</a>
-  <a href="index.html#bewertungen" class="mm-link">Bewertungen</a>
-  <a href="kontakt.html" class="mm-link" style="color:var(--gold)">Anfragen</a>
+  <a href="leistungen.html" class="mm-link" data-i18n="nav.services">Leistungen</a>
+  <a href="projekte.html" class="mm-link" data-i18n="nav.projects">Projekte</a>
+  <a href="index.html#ueber-uns" class="mm-link" data-i18n="nav.about">Über uns</a>
+  <a href="index.html#bewertungen" class="mm-link" data-i18n="nav.reviews">Bewertungen</a>
+  <a href="kontakt.html" class="mm-link" style="color:var(--gold)" data-i18n="nav.contact">Anfragen</a>
 </div>
 
 <div class="page-hero">
-  <p class="page-hero-eyebrow fu">Kostenloses Erstgespräch</p>
-  <h1 class="page-hero-title fu d1">Schreiben Sie<br><span style="color:var(--gold)">uns an.</span></h1>
-  <p class="page-hero-sub fu d2">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Festpreisangebot innerhalb von 48 Stunden.</p>
+  <p class="page-hero-eyebrow fu" data-i18n="kp.eyebrow">Kostenloses Erstgespräch</p>
+  <h1 class="page-hero-title fu d1" data-i18n-html="kp.title">Schreiben Sie<br><span style="color:var(--gold)">uns an.</span></h1>
+  <p class="page-hero-sub fu d2" data-i18n="kp.sub">Kein Auftrag ohne Vorabgespräch. Wir kommen vorbei, schauen uns alles an — und erstellen ein faires Festpreisangebot innerhalb von 48 Stunden.</p>
 </div>
 
 <div class="promise-strip">
   <div class="promises">
     <div class="promise-item fu">
       <div class="promise-icon">🚗</div>
-      <div class="promise-title">Kostenlose Besichtigung</div>
-      <div class="promise-desc">Wir kommen zu Ihnen — ohne Kosten, ohne Verpflichtung</div>
+      <div class="promise-title" data-i18n="kp.p1t">Kostenlose Besichtigung</div>
+      <div class="promise-desc" data-i18n="kp.p1d">Wir kommen zu Ihnen — ohne Kosten, ohne Verpflichtung</div>
     </div>
     <div class="promise-item fu d1">
       <div class="promise-icon">📋</div>
-      <div class="promise-title">Angebot in 48h</div>
-      <div class="promise-desc">Klares Festpreisangebot, keine versteckten Kosten</div>
+      <div class="promise-title" data-i18n="kp.p2t">Angebot in 48h</div>
+      <div class="promise-desc" data-i18n="kp.p2d">Klares Festpreisangebot, keine versteckten Kosten</div>
     </div>
     <div class="promise-item fu d2">
       <div class="promise-icon">🤝</div>
-      <div class="promise-title">Persönlicher Ansprechpartner</div>
-      <div class="promise-desc">Direkt Daniel Kunert — kein Callcenter, kein Subunternehmer</div>
+      <div class="promise-title" data-i18n="kp.p3t">Persönlicher Ansprechpartner</div>
+      <div class="promise-desc" data-i18n="kp.p3d">Direkt Daniel Kunert — kein Callcenter, kein Subunternehmer</div>
     </div>
   </div>
 </div>
 
 <div class="contact-split">
   <div class="contact-form-side">
-    <p class="form-eyebrow fu">Jetzt anfragen</p>
-    <h2 class="form-title fu d1">Ihr Projekt<br>beschreiben</h2>
-    <p class="form-sub fu d2">Je mehr Details Sie uns geben, desto präziser ist unser Angebot. Alle Felder mit * sind Pflichtfelder.</p>
+    <p class="form-eyebrow fu" data-i18n="kp.f.eyebrow">Jetzt anfragen</p>
+    <h2 class="form-title fu d1" data-i18n-html="kp.f.title">Ihr Projekt<br>beschreiben</h2>
+    <p class="form-sub fu d2" data-i18n="kp.f.sub">Je mehr Details Sie uns geben, desto präziser ist unser Angebot. Alle Felder mit * sind Pflichtfelder.</p>
     <form action="https://formspree.io/f/mlgpooqw" method="POST" class="fu d3">
       <div class="form-grid-2">
         <div class="form-group">
-          <label for="name">Vor- &amp; Nachname *</label>
-          <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+          <label for="name" data-i18n="kp.f.name">Vor- &amp; Nachname *</label>
+          <input type="text" id="name" name="name" data-i18n-placeholder="kp.f.ph.name" placeholder="Max Mustermann" required>
         </div>
         <div class="form-group">
-          <label for="tel">Telefon</label>
-          <input type="tel" id="tel" name="telefon" placeholder="0341 / ...">
+          <label for="tel" data-i18n="kp.f.phone">Telefon</label>
+          <input type="tel" id="tel" name="telefon" data-i18n-placeholder="kp.f.ph.phone" placeholder="0341 / ...">
         </div>
       </div>
       <div class="form-group">
-        <label for="email">E-Mail-Adresse *</label>
-        <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+        <label for="email" data-i18n="kp.f.email">E-Mail-Adresse *</label>
+        <input type="email" id="email" name="email" data-i18n-placeholder="kp.f.ph.email" placeholder="ihre@email.de" required>
       </div>
       <div class="form-group">
-        <label for="adresse">Adresse des Objekts</label>
-        <input type="text" id="adresse" name="adresse" placeholder="Musterstr. 12, 04109 Leipzig">
+        <label for="adresse" data-i18n="kp.f.addr">Adresse des Objekts</label>
+        <input type="text" id="adresse" name="adresse" data-i18n-placeholder="kp.f.ph.addr" placeholder="Musterstr. 12, 04109 Leipzig">
       </div>
       <div class="form-grid-2">
         <div class="form-group">
-          <label for="leistung">Gewünschte Leistung *</label>
+          <label for="leistung" data-i18n="kp.f.svc">Gewünschte Leistung *</label>
           <select id="leistung" name="leistung" required>
-            <option value="">Bitte auswählen...</option>
-            <option>Bodenbelag</option>
-            <option>Malerarbeiten</option>
-            <option>Tapezieren</option>
-            <option>Komplettrenovierung</option>
-            <option>Innenausbau</option>
-            <option>Mehreres / Sonstiges</option>
+            <option value="" data-i18n="kp.f.s0">Bitte auswählen...</option>
+            <option data-i18n="kp.f.s1">Bodenbelag</option>
+            <option data-i18n="kp.f.s2">Malerarbeiten</option>
+            <option data-i18n="kp.f.s3">Tapezieren</option>
+            <option data-i18n="kp.f.s4">Komplettrenovierung</option>
+            <option data-i18n="kp.f.s5">Innenausbau</option>
+            <option data-i18n="kp.f.s6">Mehreres / Sonstiges</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="flaeche">Ungefähre Fläche</label>
+          <label for="flaeche" data-i18n="kp.f.area">Ungefähre Fläche</label>
           <select id="flaeche" name="flaeche">
-            <option value="">Bitte auswählen...</option>
-            <option>bis 30 m²</option>
-            <option>30–60 m²</option>
-            <option>60–100 m²</option>
-            <option>100–150 m²</option>
-            <option>über 150 m²</option>
+            <option value="" data-i18n="kp.f.a0">Bitte auswählen...</option>
+            <option data-i18n="kp.f.a1">bis 30 m²</option>
+            <option data-i18n="kp.f.a2">30–60 m²</option>
+            <option data-i18n="kp.f.a3">60–100 m²</option>
+            <option data-i18n="kp.f.a4">100–150 m²</option>
+            <option data-i18n="kp.f.a5">über 150 m²</option>
           </select>
         </div>
       </div>
       <div class="form-group">
-        <label for="msg">Projektbeschreibung *</label>
-        <textarea id="msg" name="nachricht" placeholder="Z.B. Wohnzimmer + Schlafzimmer ca. 60 m², Parkett schleifen + versiegeln, Wände neu streichen. Gewünschter Starttermin: März 2026." required></textarea>
+        <label for="msg" data-i18n="kp.f.desc">Projektbeschreibung *</label>
+        <textarea id="msg" name="nachricht" data-i18n-placeholder="kp.f.ph.desc" placeholder="Z.B. Wohnzimmer + Schlafzimmer ca. 60 m², Parkett schleifen + versiegeln, Wände neu streichen. Gewünschter Starttermin: März 2026." required></textarea>
       </div>
       <input type="hidden" name="_subject" value="Neue Anfrage über Kunert Renovierung">
-      <button type="submit" class="form-submit">Anfrage kostenlos absenden</button>
-      <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Anfragebeantwortung zu. Mehr: <a href="javascript:void(0)" onclick="openSlider('dsg')" style="color:var(--gold)">Datenschutz</a></p>
+      <button type="submit" class="form-submit" data-i18n="kp.f.submit">Anfrage kostenlos absenden</button>
+      <p class="form-note"><span data-i18n="kp.f.note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Anfragebeantwortung zu. Mehr:</span> <a href="javascript:void(0)" onclick="openSlider('dsg')" style="color:var(--gold)" data-i18n="footer.privacy">Datenschutz</a></p>
     </form>
   </div>
   <div class="contact-info-side">
@@ -242,26 +245,26 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2491.5!2d12.317!3d51.340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaarl%C3%A4nder+Str.+42%2C+04179+Leipzig!5e0!3m2!1sde!2sde!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kunert Renovierung Leipzig"></iframe>
     </div>
     <div class="contact-details">
-      <h3>Direkt Kontakt</h3>
+      <h3 data-i18n="kp.c.title">Direkt Kontakt</h3>
       <div class="contact-row">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <div><div class="contact-row-label">Telefon</div><div class="contact-row-value"><a href="tel:+4917880922955">0178 8092955</a></div></div>
+        <div><div class="contact-row-label" data-i18n="kp.c.phone">Telefon</div><div class="contact-row-value"><a href="tel:+4917880922955">0178 8092955</a></div></div>
       </div>
       <div class="contact-row">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        <div><div class="contact-row-label">E-Mail</div><div class="contact-row-value"><a href="mailto:info@kunert-renovierung.de">info@kunert-renovierung.de</a></div></div>
+        <div><div class="contact-row-label" data-i18n="kp.c.email">E-Mail</div><div class="contact-row-value"><a href="mailto:info@kunert-renovierung.de">info@kunert-renovierung.de</a></div></div>
       </div>
       <div class="contact-row">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div><div class="contact-row-label">Adresse</div><div class="contact-row-value">Saarländer Str. 42<br>04179 Leipzig</div></div>
+        <div><div class="contact-row-label" data-i18n="kp.c.addr">Adresse</div><div class="contact-row-value">Saarländer Str. 42<br>04179 Leipzig</div></div>
       </div>
       <div class="contact-row">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <div><div class="contact-row-label">Öffnungszeiten</div><div class="contact-row-value">Mo–Fr 07:00 – 18:00 Uhr</div></div>
+        <div><div class="contact-row-label" data-i18n="kp.c.hours">Öffnungszeiten</div><div class="contact-row-value" data-i18n="kp.c.hours.val">Mo–Fr 07:00 – 18:00 Uhr</div></div>
       </div>
       <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-big">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        <div><div class="wa-big-text">Direkt auf WhatsApp schreiben</div><div class="wa-big-sub">Antwort meist innerhalb 1 Stunde</div></div>
+        <div><div class="wa-big-text" data-i18n="kp.wa.text">Direkt auf WhatsApp schreiben</div><div class="wa-big-sub" data-i18n="kp.wa.sub">Antwort meist innerhalb 1 Stunde</div></div>
       </a>
     </div>
   </div>
@@ -269,91 +272,92 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,92,0.1);padding
 
 <div class="faq-section">
   <div class="faq-header">
-    <h2 class="fu">Häufige Fragen</h2>
-    <p class="fu d1">Kurze Antworten auf die häufigsten Fragen unserer Kunden</p>
+    <h2 class="fu" data-i18n="kp.faq.title">Häufige Fragen</h2>
+    <p class="fu d1" data-i18n="kp.faq.sub">Kurze Antworten auf die häufigsten Fragen unserer Kunden</p>
   </div>
   <div class="faq-grid">
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Wie schnell kann ich einen Termin bekommen? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">In der Regel innerhalb von 1–3 Werktagen. Bei dringenden Fällen (z.B. nach Wasserschaden) versuchen wir, innerhalb von 48 Stunden vor Ort zu sein. Schreiben Sie uns einfach auf WhatsApp.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q1">Wie schnell kann ich einen Termin bekommen?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a1">In der Regel innerhalb von 1–3 Werktagen. Bei dringenden Fällen (z.B. nach Wasserschaden) versuchen wir, innerhalb von 48 Stunden vor Ort zu sein. Schreiben Sie uns einfach auf WhatsApp.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Was kostet eine Besichtigung? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Die Besichtigung und das Angebot sind komplett kostenlos und unverbindlich. Erst wenn Sie uns den Auftrag erteilen, entstehen Kosten.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q2">Was kostet eine Besichtigung?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a2">Die Besichtigung und das Angebot sind komplett kostenlos und unverbindlich. Erst wenn Sie uns den Auftrag erteilen, entstehen Kosten.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Arbeiten Sie auch am Wochenende? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Nach Absprache ist auch samstags ein Termin möglich — insbesondere wenn Sie die Wohnung schnell übergeben müssen. Sprechen Sie uns einfach an.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q3">Arbeiten Sie auch am Wochenende?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a3">Nach Absprache ist auch samstags ein Termin möglich — insbesondere wenn Sie die Wohnung schnell übergeben müssen. Sprechen Sie uns einfach an.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Gilt der angebotene Preis als Festpreis? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Ja. Nach der Besichtigung erhalten Sie ein klares Festpreisangebot ohne versteckte Kosten. Nur wenn sich der Auftragsumfang nachträglich ändert, passen wir das Angebot gemeinsam mit Ihnen an.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q4">Gilt der angebotene Preis als Festpreis?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a4">Ja. Nach der Besichtigung erhalten Sie ein klares Festpreisangebot ohne versteckte Kosten. Nur wenn sich der Auftragsumfang nachträglich ändert, passen wir das Angebot gemeinsam mit Ihnen an.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Wer führt die Arbeiten durch? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Daniel Kunert persönlich — mit maximal einem fest eingespielten Helfer. Wir vermitteln keine Aufträge an Subunternehmer. Sie wissen immer, wer bei Ihnen arbeitet.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q5">Wer führt die Arbeiten durch?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a5">Daniel Kunert persönlich — mit maximal einem fest eingespielten Helfer. Wir vermitteln keine Aufträge an Subunternehmer. Sie wissen immer, wer bei Ihnen arbeitet.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Muss ich während der Arbeiten zu Hause sein? <span class="faq-arrow">▾</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Nicht zwingend. Viele Kunden übergeben uns einfach einen Schlüssel. Wir hinterlassen alles sauber und besenrein — mit Fotodokumentation als Übergabenachweis.</div></div>
+      <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="kp.q6">Muss ich während der Arbeiten zu Hause sein?</span> <span class="faq-arrow">▾</span></button>
+      <div class="faq-a"><div class="faq-a-inner" data-i18n="kp.a6">Nicht zwingend. Viele Kunden übergeben uns einfach einen Schlüssel. Wir hinterlassen alles sauber und besenrein — mit Fotodokumentation als Übergabenachweis.</div></div>
     </div>
   </div>
 </div>
 
 <footer>
   <div class="foot-brand">
-    <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub">Renovierung · Leipzig</span></div>
-    <p>Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
-    <p class="ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
+    <div class="logo"><span class="logo-name">Kunert</span><span class="logo-sub" data-i18n="nav.logo-sub">Renovierung · Leipzig</span></div>
+    <p data-i18n="footer.brand-text">Professionelle Renovierung, Bodenbelag &amp; Raumgestaltung in Leipzig und Umgebung seit 2011.</p>
+    <p class="ust" data-i18n="footer.ust">§19 UStG — Kleinunternehmer. Keine Mehrwertsteuer ausgewiesen.</p>
   </div>
   <div class="foot-col">
-    <h4>Seiten</h4>
+    <h4 data-i18n="footer.pages">Seiten</h4>
     <ul>
-      <li><a href="index.html">Startseite</a></li>
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="projekte.html">Projekte</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="index.html" data-i18n="footer.home">Startseite</a></li>
+      <li><a href="leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="projekte.html" data-i18n="nav.projects">Projekte</a></li>
+      <li><a href="kontakt.html" data-i18n="nav.contact">Anfragen</a></li>
     </ul>
   </div>
   <div class="foot-col">
-    <h4>Kontakt</h4>
+    <h4 data-i18n="footer.contact">Kontakt</h4>
     <ul>
       <li><a href="tel:+4917880922955">0178 8092955</a></li>
       <li><a href="https://wa.me/491788092955">WhatsApp</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a></li>
-      <li><a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a></li>
+      <li><a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a></li>
     </ul>
   </div>
 </footer>
 <div class="foot-bottom">
   <span>© <span id="year"></span> Kunert Renovierung · Leipzig</span>
   <div style="display:flex;gap:1.5rem">
-    <a href="javascript:void(0)" onclick="openSlider('imp')">Impressum</a>
-    <a href="javascript:void(0)" onclick="openSlider('dsg')">Datenschutz</a>
+    <a href="javascript:void(0)" onclick="openSlider('imp')" data-i18n="footer.imprint">Impressum</a>
+    <a href="javascript:void(0)" onclick="openSlider('dsg')" data-i18n="footer.privacy">Datenschutz</a>
   </div>
 </div>
 
 <div class="slider-overlay" id="imp-overlay" onclick="closeSlider('imp')"></div>
 <div class="slider-panel" id="imp-panel">
   <button class="slider-close" onclick="closeSlider('imp')">✕</button>
-  <h2>Impressum</h2>
-  <h3>§ 5 TMG</h3><p>Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
-  <h3>Kontakt</h3><p>Tel: 0178 8092955 · info@kunert-renovierung.de</p>
-  <h3>Umsatzsteuer</h3><p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+  <h2 data-i18n="legal.imprint.title">Impressum</h2>
+  <h3 data-i18n="legal.imprint.s1">§ 5 TMG</h3><p data-i18n="legal.imprint.addr">Daniel Kunert · Kunert Renovierung · Saarländer Str. 42 · 04179 Leipzig</p>
+  <h3 data-i18n="legal.imprint.s2">Kontakt</h3><p data-i18n="legal.imprint.contact">Tel: 0178 8092955 · info@kunert-renovierung.de</p>
+  <h3 data-i18n="legal.imprint.s3">Umsatzsteuer</h3><p data-i18n="legal.imprint.vat">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 </div>
 <div class="slider-overlay" id="dsg-overlay" onclick="closeSlider('dsg')"></div>
 <div class="slider-panel" id="dsg-panel">
   <button class="slider-close" onclick="closeSlider('dsg')">✕</button>
-  <h2>Datenschutz</h2>
-  <h3>Verantwortlicher</h3><p>Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
-  <h3>Kontaktformular</h3><p>Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-  <h3>Hosting</h3><p>GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
+  <h2 data-i18n="legal.privacy.title">Datenschutz</h2>
+  <h3 data-i18n="legal.privacy.s1">Verantwortlicher</h3><p data-i18n="legal.privacy.ctrl">Daniel Kunert, Saarländer Str. 42, 04179 Leipzig</p>
+  <h3 data-i18n="legal.privacy.s2">Kontaktformular</h3><p data-i18n="legal.privacy.form">Angaben werden über Formspree Inc. (USA) verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <h3 data-i18n="legal.privacy.s3">Hosting</h3><p data-i18n="legal.privacy.hosting">GitHub Pages, GitHub Inc., San Francisco, CA, USA.</p>
 </div>
 
 <a href="https://wa.me/491788092955" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
 </a>
 
+<script src="i18n.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 window.addEventListener('scroll',()=>document.getElementById('header').classList.toggle('scrolled',scrollY>60),{passive:true});
